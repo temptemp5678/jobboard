@@ -37,8 +37,6 @@ function libraryinfo_library() {
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js' => array('type' => 'external'),
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.min.js' => array('type' => 'external'),
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js' => array('type' => 'external'),
-      'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.js' => array('type' => 'external'),
-      'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js' => array('type' => 'external'),
     ),
   );
 

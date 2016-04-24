@@ -30,7 +30,7 @@ function jobboard_menu() {
     'page callback' => '_jobboard_jobs_map',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
-    'file' => 'inc/jobboard_jobs_list.page.inc',
+    'file' => 'inc/jobboard_jobs_map.page.inc',
   );
 
   return $items;

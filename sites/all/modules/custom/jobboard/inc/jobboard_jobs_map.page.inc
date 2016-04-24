@@ -5,20 +5,19 @@
  */
 function _jobboard_jobs_map() {
   drupal_add_library('libraryinfo', 'libraryinfo_leaflet');
-  // drupal_add_js(drupal_get_path('module', 'reportpage') . '/js/reportpage_summary_index.js');
+
+  drupal_add_js(drupal_get_path('module', 'jobboard') . '/js/jobboard_jobs_map.js');
+
+  drupal_add_css(drupal_get_path('module', 'jobboard') . '/css/jobboard_jobs_map.css');
 
   $output = '';
   $output .= '<div class="panel panel-default">';
-    $output .= '<div class="panel-heading">' . t('Top Product') . '</div>';
+    $output .= '<div class="panel-heading">' . t('Job Map') . '</div>';
     $output .= '<div class="panel-body bg-ffffff padding-0">';
-      $output .= '<canvas class="padding-6-12 float-left" id="reportpage-summary-quote-bar-chart" width="390" height="150"></canvas>';
-    $output .=' </div>';
-  $output .=' </div>';
-
-  $output .= '<div class="panel panel-default">';
-    $output .= '<div class="panel-heading">Product</div>';
-    $output .= '<div class="panel-body bg-ffffff padding-0">';
-      $output .= '<canvas class="padding-6-12" id="reportpage-summary-quote-line-chart" width="390" height="150"></canvas>';
+      $output .= '<div class="leaflet-map-wrapper">';
+        $output .= '<div id="mapid">';
+        $output .=' </div>';
+      $output .=' </div>';
     $output .=' </div>';
   $output .=' </div>';
 
