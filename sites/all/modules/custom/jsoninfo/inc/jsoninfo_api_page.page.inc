@@ -2,10 +2,7 @@
 /**
  * callback from hook_menu()
  */
-function _jsoninfo_page_landing($tid = NULL, $start_time = NULL, $end_time = NULL) {
-  $TermProgramQuery = new TermProgramQuery();
-  $program_tids = $TermProgramQuery->programTidsByUnit($tid);
-
+function _jsoninfo_jobboard_jobs_map() {
   $JsonData = new JsonData();
-  drupal_json_output($JsonData->jsonPageLanding($program_tids, $start_time, $end_time));
+  drupal_json_output($JsonData->jsonJobboardJobsMap());
 }
