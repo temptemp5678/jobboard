@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * print one vocabulary
+ */
 $tree = taxonomy_get_tree(6);
 $output = '';
 
@@ -21,6 +24,51 @@ foreach($tree as $key => $val){
       // $output[] = $row;
     }
   }
+}
+
+/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+$terms = termsArray();
+foreach($terms as $key => $value){
+  $data = array(
+    'name' => $value,
+    'vid' => 5,
+  );
+  $term = entity_create('taxonomy_term', $data);
+
+  $wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+  $wrapper->save();
+
+  // save again
+  $wrapper->save();
+}
+
+/**
+ * import terms
+ */
+function termsArray() {
+  $terms = array(
+    'Administrative',
+    'Business',
+    'Computer Sciences',
+    'Consumer Packaged Goods',
+    'Consumer Products',
+    'Customer Service',
+    'Financial Services and Banking',
+    'Healthcare and Medical Services',
+    'Hospitality',
+    'Maintenance',
+    'Manufacturing',
+    'Marketing',
+    'Pharmacy',
+    'Recruitment and Staffing',
+    'Retail',
+    'Project Management',
+    'IT',
+    'Sales',
+    'Telecommunications',
+  );
+
+  return $terms;
 }
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
