@@ -4,7 +4,7 @@
  * Implements page_callback(), callback from hook_menu()
  */
 function _jobboard_jobs_list() {
-  drupal_add_library('settinginfo', 'settinginfo_chart_js');
+  drupal_add_library('libraryinfo', 'libraryinfo_leaflet');
   drupal_add_js(drupal_get_path('module', 'reportpage') . '/js/reportpage_summary_index.js');
 
   $output = '';
