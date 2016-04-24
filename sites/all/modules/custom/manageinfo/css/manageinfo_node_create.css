@@ -1,0 +1,21 @@
+.vertical-tabs {
+  display: none;
+}
+
+#product-node-form .form-item-language {
+  display: none;
+}
+
+#edit-field-meeting-date-und-0-value label {
+  display: none;
+}
+
+/*translation tab option*/
+.pagination .language-link{
+  margin-top: 20px;
+}
+
+.custom-published-wrapper {
+  margin-bottom: 36px;
+}
+

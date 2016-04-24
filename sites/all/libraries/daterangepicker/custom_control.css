@@ -1,0 +1,27 @@
+/**
+ * custo control daterangepicker CSS
+ * override default style
+ */
+
+.daterangepicker.dropdown-menu {
+  font-size: 12px;
+}
+
+.daterangepicker .calendar {
+  width: auto;
+}
+
+#daterangepicker-warpper > i.fa{
+  margin-right: 4px;
+}
+
+
+.daterangepicker .ranges {
+  font-size: 11px;
+}
+
+
+.daterangepicker .ranges li {
+  font-size: 11px;
+
+}

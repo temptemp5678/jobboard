@@ -1,0 +1,375 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_init()
+ */
+// function jsoninfo_init() {
+  // $JsonData = new JsonData();
+  // OtherCommonJson::saveDataToJson($JsonData->programData(), 'source/program_data.json');
+// }
+
+/**
+ * Implements hook_menu()
+ */
+function jsoninfo_menu() {
+  $items = array();
+
+  /**
+   * manage
+   */
+  /** - - - - - - node - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['manage/json/node/event/list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_node_event_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_node.page.inc',
+  );
+
+  $items['manage/json/node/evaluation/question-set'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_node_evaluation_question_set',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_node.page.inc',
+  );
+
+  $items['manage/json/node/meeting/create'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_node_meeting_create',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_node.page.inc',
+  );
+  $items['manage/json/node/meeting/edit'] = array(
+    'title' => 'Edit JSON',
+    'page callback' => '_jsoninfo_node_meeting_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_node.page.inc',
+  );
+
+  $items['manage/json/node/meeting/detail'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_node_meeting_detail',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_node.page.inc',
+  );
+  $items['manage/json/node/meeting/list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_node_meeting_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_node.page.inc',
+  );
+  $items['manage/json/node/meeting/map'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_node_meeting_map',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_node.page.inc',
+  );
+
+  /** - - - - - - page - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['manage/json/page/landing'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_page_landing',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_page.page.inc',
+  );
+
+  /** - - - - - - table - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['manage/json/program/table'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_table_program',    // datatable
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_table.page.inc',
+  );
+
+  /** - - - - - - program - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['manage/json/therapeutic-area/snapshot'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_therapeutic_area_snapshot',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+  $items['manage/json/program/area-accredited'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_program_area_accredited',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+  $items['manage/json/program/area-ola'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_program_area_ola',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+
+  $items['manage/json/program/data'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_program_data',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+
+  $items['manage/json/program/list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_program_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+
+  $items['manage/json/program/snapshot'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_program_snapshot',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+
+  $items['manage/json/business-unit/snapshot'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_business_unit_snapshot',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+
+  $items['manage/json/division/snapshot'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_division_snapshot',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+
+  $items['manage/json/program/unit-program'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_program_unit_program',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_program.page.inc',
+  );
+
+  /** - - - - - - term - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['manage/json/term/all-program-data'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_all_program_data',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/business-unit/edit'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_business_unit_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/evaluation-form/edit'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_evaluation_form_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/evaluation-form/question-set'] = array(
+    'title' => 'Question Set JSON',
+    'page callback' => '_jsoninfo_term_evaluation_form_question_set',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/evaluation-form-list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_evaluation_form_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+  $items['manage/json/term/evaluation-form-question-list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_evaluation_form_question_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/program/edit'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_program_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+  $items['manage/json/term/program/list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_program_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/question-field/create'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_question_field_create',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/question-field-data'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_question_field_data',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  $items['manage/json/term/question-library'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_question_library',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+  $items['manage/json/term/question-library/edit'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_question_library_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+  $items['manage/json/term/question-library/list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_question_library_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+  $items['manage/json/term/question-library/field-option'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_question_library_field_option',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+  $items['manage/json/term/question-library/table'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_term_question_library_table',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_term.page.inc',
+  );
+
+  /** - - - - - - user - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['manage/json/user/list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_user_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_user.page.inc',
+  );
+  $items['manage/json/user/profile'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_user_profile',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_user.page.inc',
+  );
+
+  $items['manage/json/user-speaker/details'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_user_speaker_details',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_user.page.inc',
+  );
+
+  /** - - - - - - debug - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['jsoninfo/debug/json/speaker-page'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_debug_json_speaker_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_debug_json.page.inc',
+  );
+  $items['jsoninfo/debug/json/program/edit'] = array(
+    'title' => 'Edit JSON',
+    'page callback' => '_jsoninfo_debug_json_program_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_debug_json.page.inc',
+  );
+
+  $items['manage/debug-json/program/unit'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_debug_program_unit',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_debug_json.page.inc',
+  );
+
+  /** - - - - - - debug - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['manage/debug/json/directive/demo'] = array(
+    'title' => 'Create Directive JSON',
+    'page callback' => '_jsoninfo_debug_directive_demo',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_debug_directive_demo.page.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_taxonomy_term_insert()
+ */
+function jsoninfo_taxonomy_term_insert($term) {
+  // check if term is city vocabulary
+  if ($term->vid == 18) {
+    $JsonDataCacheFile = new JsonDataCacheFile();
+    $JsonDataCacheFile->termCity();
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_update()
+ */
+function jsoninfo_taxonomy_term_update($term) {
+  // check if term is city vocabulary
+  if ($term->vid == 18) {
+    $JsonDataCacheFile = new JsonDataCacheFile();
+    $JsonDataCacheFile->termCity();
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_delete()
+ */
+function jsoninfo_taxonomy_term_delete($term) {
+  // check if term is city vocabulary
+  if ($term->vid == 18) {
+    $JsonDataCacheFile = new JsonDataCacheFile();
+    $JsonDataCacheFile->termCity();
+  }
+}
+
+

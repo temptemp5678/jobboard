@@ -1,0 +1,6 @@
+name = Job Board
+description = Job Board Page
+core = 7.x
+package = Zen Other
+
+version  = 7.x-1.1

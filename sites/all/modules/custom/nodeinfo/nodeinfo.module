@@ -1,0 +1,144 @@
+<?php
+/**
+ * @file
+ *
+ */
+/**
+ * Implements hook_init()
+ */
+function nodeinfo_init() {
+  global $user;
+
+  // add css for "node/%" node view page
+  if ((arg(0) == 'node') && is_numeric(arg(1)) && ($user->uid > 0)) {
+    drupal_add_css(drupal_get_path('module', 'nodeinfo') . '/css/node_view_page.css');
+  }
+}
+
+
+/**
+ * Implements hook_form_alter()
+ */
+function nodeinfo_form_alter(&$form, &$form_state, $form_id) {
+  /**
+   * node form
+   */
+  if ($form_id == 'quote_node_form') {
+    /**
+     * hide title field, and revise node title is optional instead of required mandatory
+     */
+    // $form['title']['#default_value'] = t('new quote');
+    // $form['title']['#type'] = 'hidden';
+    // $form['title']['#required'] = FALSE;
+  }
+}
+
+
+/**
+ * Implements hook_node_presave().
+ * Act on a node being inserted or updated.
+ */
+function nodeinfo_node_presave($node) {
+  _nodeinfo_nodetitle_set_title($node);
+}
+
+/**
+ * add automatic node title.
+ */
+function _nodeinfo_nodetitle_set_title(&$node) {
+  /**
+   * meeting
+   */
+  if ($node->type == 'quote') {
+    // $node->title = t('new quote');
+  }
+}
+
+/**
+ * Implements hook_node_insert().
+ * Act on a node being inserted or updated.
+ */
+function nodeinfo_node_insert($node) {
+  if ($node->type == 'product') {
+    _nodeinfo_product_set_zhhans_description($node);
+  }
+}
+
+/**
+ * add automatic node title.
+ */
+function _nodeinfo_product_set_zhhans_description($node) {
+  /**
+   * update translations->data['zh-hans']
+   */
+  $translation = array(
+    'translate' => 0,
+    'status' => 1,
+    'language' => 'zh-hans', // here is the language you're translating to
+    'source' => 'en',        // here is the source language
+  );
+
+  $node = node_load($node->nid);   // If you've called node_save($node) before, you'll have the node object already and you can omit this
+  $handler = entity_translation_get_handler('node', $node);
+  $handler->setTranslation($translation);
+
+  // $node->field_product_description['zh-hans'][0]['value'] = 'miaoshu'; // You can write the array like this, I find it easier to read
+
+  field_attach_presave('node', $node);
+  field_attach_update('node', $node);
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function nodeinfo_node_access($node, $op, $account = NULL) {
+  $type = is_string($node) ? $node : $node->type;
+
+  // make sure you are responding to content type defined by your module only.
+  if ($type == 'quote' || $type == 'order') {
+    if (isset($node->nid)) {
+
+      // If no account is specified, assume that the check is against the current logged in user
+      global $user;
+      if (!isset($account)) {
+        $account = $GLOBALS['user'];
+      }
+
+      $QuoteInfo = new QuoteInfo($node->nid);
+
+      if ($op == 'view') {
+        if ($QuoteInfo->accessView($account)) {
+          return NODE_ACCESS_ALLOW;
+        }
+        else {
+          return NODE_ACCESS_DENY;
+        }
+      }
+
+      if ($op == 'edit') {
+        if ($QuoteInfo->accessView($account)) {
+          return NODE_ACCESS_ALLOW;
+        }
+        else {
+          return NODE_ACCESS_DENY;
+        }
+      }
+    }
+  }
+
+  // Returning nothing from this function would have the same effect.
+  return NODE_ACCESS_IGNORE;
+}
+
+/**
+ * Implement hook_field_access()
+ */
+function nodeinfo_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($field['field_name'] == 'field_product_reference_price' && $op == 'edit') {
+    return user_access('access role siteadmin', $account);
+  }
+  if ($field['field_name'] == 'field_product_reference_price' && $op == 'view') {
+    return user_access('access role siteadmin', $account);
+  }
+  return TRUE;
+}

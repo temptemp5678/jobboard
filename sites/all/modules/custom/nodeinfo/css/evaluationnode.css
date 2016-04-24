@@ -1,0 +1,38 @@
+.page-flexxia-admin-evaluation-new-evaluation .form-type-select{
+  float: left;
+  clear: both;
+}
+
+
+.page-flexxia-admin-evaluation-add-evaluation #evaluation-node-form .vertical-tabs,
+.page-flexxia-admin-evaluation-edit-evaluation #evaluation-node-form .vertical-tabs {
+  display: none;
+}
+
+.page-flexxia-admin-evaluation-add-evaluation button.field-add-more-submit,
+.page-flexxia-admin-evaluation-edit-evaluation button.field-add-more-submit {
+  display: none;
+}
+
+.page-flexxia-admin-evaluation-add-evaluation #field-evaluation-question-values .field-multiple-drag,
+.page-flexxia-admin-evaluation-edit-evaluation #field-evaluation-question-values .field-multiple-drag {
+  display: none;
+}
+
+#edit-field-evaluation-question .tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+
+#edit-field-evaluation-question .tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+
+.page-flexxia-admin-evaluation-add-evaluation .element-hidden.form-control,
+.page-flexxia-admin-evaluation-new-evaluation .element-hidden.form-control,
+.page-flexxia-admin-evaluation-edit-evaluation .element-hidden.form-control {
+  display: none;
+}
+
+.page-flexxia-admin-evaluation-edit-evaluation #field-evaluation-question-values tr.draggable:last-child {
+  display: none;
+}

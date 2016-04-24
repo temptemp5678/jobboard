@@ -1,0 +1,20 @@
+/*.page-taxonomy-term .form-item-description-value,
+.page-taxonomy-term .text-format-wrapper,
+.page-taxonomy-term #edit-relations,
+.page-taxonomy-term .panel.form-wrapper,
+.page-taxonomy-term .form-item-path-alias {
+  display: none;
+}*/
+
+#block-system-main form .form-item-description-value,
+#block-system-main form .text-format-wrapper,
+#block-system-main form #edit-relations,
+#block-system-main form .panel.form-wrapper,
+#block-system-main form .form-item-path-alias {
+  display: none;
+}
+
+/* manage/company/add */
+.form-item-language.form-type-select {
+  display: none;;
+}
