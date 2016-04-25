@@ -221,50 +221,6 @@ class NodeInfo {
  */
 class JobsInfo extends NodeInfo {
   /**
-   * @return Boolean,
-   * access View Permission
-   */
-  public function accessView($user = NULL) {
-    $output = FALSE;
-
-    if (isset($user->uid)) {
-      if ($user->uid == 1) {
-        $output = TRUE;
-      }
-    }
-
-    if(isset($user)) {
-      if ($user->uid == $this->nodeUid()) {
-        $output = TRUE;
-      }
-
-      if (array_intersect(array('manager', 'siteadmin', 'administrator'), array_values($user->roles))) {
-        $output = TRUE;
-      }
-
-      if (is_array($this->accessPermissionUids())) {
-        if (in_array($user->uid, $this->accessPermissionUids())) {
-          $output = TRUE;
-        }
-      }
-    }
-    return $output;
-  }
-
-  /**
-   * @return Integer, Term Tid
-   */
-  public function accessPermissionUids() {
-    $output = NULL;
-    if (isset($this->node->field_quote_access_permission['und'][0]['target_id'])) {
-      foreach ($this->node->field_quote_access_permission['und'] as $key => $value) {
-        $output[] = $value['target_id'];
-      }
-    }
-    return $output;
-  }
-
-  /**
    * @return Integer, Term Tid
    */
   public function clientTid() {
@@ -300,144 +256,9 @@ class JobsInfo extends NodeInfo {
   }
 
   /**
-   * @return Integer, Term Tid
-   */
-  public function companyTid() {
-    $output = NULL;
-    if (isset($this->node->field_quote_company['und'][0]['target_id'])) {
-      $output = $this->node->field_quote_company['und'][0]['target_id'];
-    }
-
-    return $output;
-  }
-  /**
-   * @return Object, Term Property
-   */
-  public function companyObject() {
-    $output = NULL;
-
-    $TermCompanyInfo = new TermCompanyInfo($this->companyTid());
-    if(!empty($TermCompanyInfo)) {
-      $output = $TermCompanyInfo;
-    }
-    return $output;
-  }
-
-  /**
-   * @return String,
-   */
-  public function contactPerson() {
-    $output = NULL;
-    if (isset($this->node->field_quote_contact_person['und'][0]['value'])) {
-      $output = $this->node->field_quote_contact_person['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String,
-   */
-  public function contactAddress() {
-    $output = NULL;
-    if (isset($this->node->field_quote_contact_address['und'][0]['value'])) {
-      $output = $this->node->field_quote_contact_address['und'][0]['value'];
-    }
-    return $output;
-  }
-  /**
-   * @return String,
-   */
-  public function contactEmail() {
-    $output = NULL;
-    if (isset($this->node->field_quote_contact_email['und'][0]['value'])) {
-      $output = $this->node->field_quote_contact_email['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String,
-   */
-  public function contactFax() {
-    $output = NULL;
-    if (isset($this->node->field_quote_contact_fax['und'][0]['value'])) {
-      $output = $this->node->field_quote_contact_fax['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String,
-   */
-  public function contactMobile() {
-    $output = NULL;
-    if (isset($this->node->field_quote_contact_mobile['und'][0]['value'])) {
-      $output = $this->node->field_quote_contact_mobile['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String,
-   */
-  public function contactPhone() {
-    $output = NULL;
-    if (isset($this->node->field_quote_contact_phone['und'][0]['value'])) {
-      $output = $this->node->field_quote_contact_phone['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String,
-   */
-  public function creditTime() {
-    $output = NULL;
-    if (isset($this->node->field_quote_credit_time['und'][0]['value'])) {
-      $output = $this->node->field_quote_credit_time['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return Integer, currency Uid
-   */
-  public function currencyTid() {
-    $output = NULL;
-    if (isset($this->node->field_quote_currency['und'][0]['target_id'])) {
-      $output = $this->node->field_quote_currency['und'][0]['target_id'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return Integer, currency Name is currency symbol
-   */
-  public function currencyName() {
-    $output = NULL;
-    $TermInfo = new TermInfo($this->currencyTid());
-    if(!empty($TermInfo)) {
-      $output = $TermInfo->termName();
-    }
-    return $output;
-  }
-  /**
-   * @return Object, currency Property
-   */
-  public function currencyObject() {
-    $output = NULL;
-
-    $TermInfo = new TermInfo($this->currencyTid());
-    if(!empty($TermInfo)) {
-      $output = $TermInfo;
-    }
-    return $output;
-  }
-
-  /**
    * @return integer, date unix stamp for quote order time
    */
-  public function dateTimeUnixStamp() {
+  public function datePostedTimeUnixStamp() {
     $output = NULL;
     if (isset($this->node->field_quote_datetime['und'][0]['value'])) {
       $output = $this->node->field_quote_datetime['und'][0]['value'];
@@ -447,13 +268,13 @@ class JobsInfo extends NodeInfo {
   /**
    * @return integer, date unix stamp
    */
-  public function dateTimeValue($format = NULL) {
+  public function datePostedTimeValue($format = NULL) {
     if (!$format) {
       $format = "Y-m-d";
     }
 
     $output = NULL;
-    $stamp = $this->dateTimeUnixStamp();
+    $stamp = $this->datePostedTimeUnixStamp();
     if ($stamp) {
       $output = format_date($stamp, 'custom', $format);
     }
@@ -461,124 +282,23 @@ class JobsInfo extends NodeInfo {
   }
 
   /**
-   * @return String, quote number
+   * @return
    */
-  public function discount() {
+  public function latitude() {
     $output = NULL;
-    if (isset($this->node->field_quote_discount['und'][0]['value'])) {
-      $output = $this->node->field_quote_discount['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return integer, date unix stamp
-   */
-  public function nodeDuplicateLink() {
-    $output = base_path() . 'quote/node/duplicate/' . $this->nid;
-    return $output;
-  }
-
-
-  /**
-   * @return Integer, user Uid
-   */
-  public function offerorUid() {
-    $output = NULL;
-    if (isset($this->node->field_quote_offeror['und'][0]['target_id'])) {
-      $output = $this->node->field_quote_offeror['und'][0]['target_id'];
+    if (isset($this->node->field_jobs_latitude['und'][0]['value'])) {
+      $output = $this->node->field_jobs_latitude['und'][0]['value'];
     }
     return $output;
   }
   /**
-   * @return Object, User Property
+   * @return
    */
-  public function offerorObject() {
+  public function longitude() {
     $output = NULL;
-
-    $UserInfo = new UserInfo($this->offerorUid());
-
-    if(!empty($UserInfo)) {
-      $output = $UserInfo;
+    if (isset($this->node->field_jobs_longitude['und'][0]['value'])) {
+      $output = $this->node->field_jobs_longitude['und'][0]['value'];
     }
-    return $output;
-  }
-
-  /**
-   * @return Array, quote product items
-   */
-  public function quoteProductItems() {
-    $output = NULL;
-    if (isset($this->node->field_quote_product_items['und'][0]['quotation_product_name'])) {
-      $output = $this->node->field_quote_product_items['und'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String, quote number
-   */
-  public function quoteNumber() {
-    $output = NULL;
-    if (isset($this->node->field_quote_number['und'][0]['value'])) {
-      $output = $this->node->field_quote_number['und'][0]['value'];
-    }
-    return $output;
-  }
-  /**
-   * @return Array, quote number
-   */
-  public function quoteProductItemsArray() {
-    $output = NULL;
-    if (isset($this->node->field_quote_product_items['und'][0]['quotation_id'])) {
-      $output = $this->node->field_quote_product_items['und'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return Integer, Term Tid
-   */
-  public function referenecePersonTid() {
-    $output = NULL;
-    if (isset($this->node->field_quote_referenece_person['und'][0]['target_id'])) {
-      $output = $this->node->field_quote_referenece_person['und'][0]['target_id'];
-    }
-    return $output;
-  }
-  /**
-   * @return Object, Term Property
-   */
-  public function referenecePersonObject() {
-    $output = NULL;
-
-    $TermContactInfo = new TermContactInfo($this->referenecePersonTid());
-    if(!empty($TermContactInfo)) {
-      $output = $TermContactInfo;
-    }
-    return $output;
-  }
-
-  /**
-   * @return Integer, user Uid
-   */
-  public function stamp() {
-    $output = NULL;
-    if (isset($this->node->field_quote_stamp['und'][0]['target_id'])) {
-      $output = $this->node->field_quote_stamp['und'][0]['target_id'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return float, Terms
-   */
-  public function terms() {
-    $output = NULL;
-    if (isset($this->node->field_quote_terms['und'][0]['safe_value'])) {
-      $output = $this->node->field_quote_terms['und'][0]['safe_value'];
-    }
-    $output = check_markup($output);
     return $output;
   }
 
@@ -589,17 +309,6 @@ class JobsInfo extends NodeInfo {
     $output = NULL;
     if (isset($this->node->field_quote_total_price['und'][0]['value'])) {
       $output = $this->node->field_quote_total_price['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return float, Warrant Time
-   */
-  public function warrantTime() {
-    $output = NULL;
-    if (isset($this->node->field_quote_warrant_time['und'][0]['value'])) {
-      $output = $this->node->field_quote_warrant_time['und'][0]['value'];
     }
     return $output;
   }

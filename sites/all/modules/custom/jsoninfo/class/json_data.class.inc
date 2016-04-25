@@ -21,27 +21,13 @@ class JsonDataUnit{
 
     $output = array();
     foreach ($nodes as $key => $node) {
-      $NodeInfo = new NodeInfo($node->nid);
+      $JobsInfo = new JobsInfo($node->nid);
 
-      if ($MeetingInfo->latitude() && $MeetingInfo->longitude()) {
-        $output[$node->nid] = array(
-          "latitude" => $MeetingInfo->latitude(),
-          "longitude" => $MeetingInfo->longitude(),
-          "pageUrl" => '#1',
-          "unitName" => $TermProgramInfo->programUnitName(),
-          "programName" => '<a href="' . base_path() . 'dashpage/program/snapshot/' . $MeetingInfo->programTid() . '" class="color-fff google-map-program-name">' . truncate_utf8($MeetingInfo->programName(), 30, FALSE, TRUE) . '</a>',
-          "meetingDate" => $MeetingInfo->dateValue('M d, Y'),
-          "meetingLocation" => $MeetingInfo->cityName() . ', ' . $MeetingInfo->provinceNameAbbr(),
-          "speakerName" => $MeetingInfo->speakerName(),
-          "speakerNameUrl" => '#',
-          "repName" => $MeetingInfo->repName(),
-          "evaluationCount" => $MeetingInfo->evaluationsCount(),
-          "venuName"  => $MeetingInfo->venueName(),
-          "venuType"  => $MeetingInfo->meetingTypeName(),
-          "attendiesCount"  => $MeetingInfo->signatures(),
-          "blockId"  => 'google-map-' . $node->nid,
-          "619" => l('Event Link', '#'),
-          "eventLink" => l(t('View'), 'dashpage/meeting/details/' . $node->nid),
+      if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
+        $output[] = array(
+          "latitude" => $JobsInfo->latitude(),
+          "longitude" => $JobsInfo->longitude(),
+          "nodeTitle"  => $JobsInfo->nodeTitle(),
         );
       }
     }
