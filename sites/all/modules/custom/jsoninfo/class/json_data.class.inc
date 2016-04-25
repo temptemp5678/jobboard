@@ -22,12 +22,11 @@ class JsonDataUnit{
     $output = array();
     foreach ($nodes as $key => $node) {
       $NodeInfo = new NodeInfo($node->nid);
-      $TermProgramInfo = new TermProgramInfo($NodeInfo->programTid());
 
       if ($MeetingInfo->latitude() && $MeetingInfo->longitude()) {
         $output[$node->nid] = array(
-          "lat" => $MeetingInfo->latitude(),
-          "lng" => $MeetingInfo->longitude(),
+          "latitude" => $MeetingInfo->latitude(),
+          "longitude" => $MeetingInfo->longitude(),
           "pageUrl" => '#1',
           "unitName" => $TermProgramInfo->programUnitName(),
           "programName" => '<a href="' . base_path() . 'dashpage/program/snapshot/' . $MeetingInfo->programTid() . '" class="color-fff google-map-program-name">' . truncate_utf8($MeetingInfo->programName(), 30, FALSE, TRUE) . '</a>',
