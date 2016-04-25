@@ -29,6 +29,13 @@ function jsoninfo_menu() {
     'type' => MENU_CALLBACK,
     'file' => 'inc/jsoninfo_api_page.page.inc',
   );
+  $items['jsoninfo/jobboard/jobs/geomap.geojson'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_jobboard_jobs_geomap',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_page.page.inc',
+  );
 
   /** - - - - - - - page - - - - - - - - - - - - - - - - - - - - - - - -  */
   /**
