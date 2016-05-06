@@ -7,10 +7,7 @@ jQuery(document).ready(function(){
   var plotlayers=[];
 
   // initialize the map
-  // var map = L.map('mapid').setView([42.32, -82.95], 11);          // Windsor
-  // var map = L.map('mapid').setView([42.35, -71.08], 11);          // Boston
   var map = L.map('mapid').setView([39.911640, 116.401938], 12);  // Beijing
-  // var map = L.map('mapid').setView([-41.2858, 174.78682], 14);       // Wellington
 
   // load a tile layer
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -58,33 +55,29 @@ jQuery(document).ready(function(){
       return null;
     }
   });
+
   /** - - - - - - - Numbered Markers - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-  var windsorMarker1 = new L.Marker([42.33, -82.95], {
-    icon: new L.NumberedDivIcon({number: '2'})
-  }).addTo(map);
-
   var beijingMarker1 = new L.Marker([39.8680001534,116.4951235621], {
     icon: new L.NumberedDivIcon({number: '1'})
-  }).addTo(map);
+  }).addTo(map).bindPopup("北京欢乐谷");
   var beijingMarker2 = new L.Marker([39.8697123562,116.4689510129], {
     icon: new L.NumberedDivIcon({number: '2'})
-  }).addTo(map);
+  }).addTo(map).bindPopup("北京海碗居老北京炸酱面(松榆里店)");
   var beijingMarker3 = new L.Marker([39.8724295509,116.4073786290], {
     icon: new L.NumberedDivIcon({number: '3'})
-  }).addTo(map);
+  }).addTo(map).bindPopup("北京宏源南门涮肉 （天坛南门）");
   var beijingMarker4 = new L.Marker([39.8977622583,116.3795603460], {
     icon: new L.NumberedDivIcon({number: '4'})
-  }).addTo(map);
+  }).addTo(map).bindPopup("和平门全聚德");
   var beijingMarker5 = new L.Marker([39.9490800894,116.3429831306], {
     icon: new L.NumberedDivIcon({number: '5'})
-  }).addTo(map);
+  }).addTo(map).bindPopup("江边城外烤全鱼(交大店) （北京动物园北门外）");
   var beijingMarker6 = new L.Marker([39.9394981960,116.3905858926], {
     icon: new L.NumberedDivIcon({number: '6'})
-  }).addTo(map);
+  }).addTo(map).bindPopup("姚记炒肝店（鼓楼包子）");
   var beijingMarker7 = new L.Marker([39.939233, 116.422959], {
     icon: new L.NumberedDivIcon({number: '7'})
-  }).addTo(map);
+  }).addTo(map).bindPopup("北京簋街");
 
   /**
    *
@@ -96,6 +89,5 @@ jQuery(document).ready(function(){
    6. 姚记炒肝店（鼓楼包子）
    7. 北京簋街
    */
-
 
 });

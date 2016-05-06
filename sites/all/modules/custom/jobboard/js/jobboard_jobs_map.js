@@ -10,7 +10,6 @@ jQuery(document).ready(function(){
   var map = L.map('mapid').setView([42.26, -82.95], 12);          // Windsor
   // var map = L.map('mapid').setView([42.35, -71.08], 11);          // Boston
   // var map = L.map('mapid').setView([39.911640, 116.401938], 12);  // Beijing
-  // var map = L.map('mapid').setView([-41.2858, 174.78682], 14);       // Wellington
 
   // load a tile layer
   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -21,7 +20,7 @@ jQuery(document).ready(function(){
    }).addTo(map);
 
   /** - - - - - - - Numbered Markers - - - - - - - - - - - - - - - - - - - - - - - -  */
-  /**
+  /**-+8
    * Numbered Markers in Leaflet (JS Mapping)
    * https://gist.github.com/comp615/2288108
    */
@@ -63,6 +62,8 @@ jQuery(document).ready(function(){
   var windsorMarker1 = new L.Marker([42.33, -82.95], {
     icon: new L.NumberedDivIcon({number: '2'})
   }).addTo(map);
+
+  windsorMarker1.bindPopup("I am a polygon.");
 
   // var jsonUrl = basePathUrl + "jsoninfo/jobboard/jobs/geomap.geojson";
   // jQuery.getJSON(jsonUrl, function(data){
