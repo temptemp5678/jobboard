@@ -1,0 +1,97 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/*
+ * Implements of hook_init()
+ */
+function manageinfo_init() {
+}
+
+/**
+ * Implements hook_menu()
+ */
+function manageinfo_menu() {
+  $items = array();
+
+  /** - - - - node - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+  $items['manage/product/create'] = array(
+    'title' => 'Create Node',
+    'page callback' => '_manageinfo_node_create',
+    'page arguments' => array("product"),
+    'access arguments' => array('access role siteadmin'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_node_create.page.inc',
+  );
+
+  $items['manage/node/edit'] = array(
+    'title' => 'Edit Product',
+    'page callback' => '_manageinfo_node_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_node_edit.page.inc',
+  );
+
+  /** - - - - term - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+  $items['manage/client/add'] = array(
+    'title' => 'Create Client',
+    'page callback' => '_manageinfo_term_add',
+    'page arguments' => array("4"),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_term_create.page.inc',
+  );
+
+  $items['manage/brand/add'] = array(
+    'title' => 'Create Brand',
+    'page callback' => '_manageinfo_term_add',
+    'page arguments' => array("2"),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_term_create.page.inc',
+  );
+
+  $items['manage/company/add'] = array(
+    'title' => 'Create Company',
+    'page callback' => '_manageinfo_term_add',
+    'page arguments' => array("7"),
+    'access arguments' => array('access role siteadmin'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_term_create.page.inc',
+  );
+
+  $items['manage/contact/add'] = array(
+    'title' => 'Create Contact',
+    'page callback' => '_manageinfo_term_add',
+    'page arguments' => array("5"),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_term_create.page.inc',
+  );
+
+  $items['manage/term/edit'] = array(
+    'title' => 'Edit Term',
+    'page callback' => '_terminfo_term_edit',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_term_edit.page.inc',
+  );
+
+  $items['manage/term/table'] = array(
+    'title' => 'Term Table',
+    'page callback' => '_manageinfo_term_table',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/manageinfo_term_table.page.inc',
+  );
+
+  /** - - - - - - User - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+  // userinfo module for manage/user/create
+
+  return $items;
+}
+

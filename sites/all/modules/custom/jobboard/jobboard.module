@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_init()
+ */
+function jobboard_init() {
+
+}
+
+/**
+ * Implements hook_menu()
+ */
+function jobboard_menu() {
+  $items = array();
+
+  $items['jobboard/jobs/list'] = array(
+    'title' => 'Report Summary',
+    'page callback' => '_jobboard_jobs_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jobboard_jobs_list.page.inc',
+  );
+
+  $items['jobboard/jobs/map'] = array(
+    'title' => 'Map',
+    'page callback' => '_jobboard_jobs_map',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jobboard_jobs_map.page.inc',
+  );
+
+  return $items;
+}

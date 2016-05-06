@@ -1,0 +1,20 @@
+#mapid {
+  height: 720px;
+}
+
+/**
+ * Numbered Markers in Leaflet (JS Mapping)
+ * https://gist.github.com/comp615/2288108
+ */
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+
+.leaflet-marker-icon .number{
+  position: relative;
+  top: -37px;
+  font-size: 12px;
+  width: 26px;
+  text-align: center;
+}

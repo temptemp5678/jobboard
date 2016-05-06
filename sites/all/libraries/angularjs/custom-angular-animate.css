@@ -1,0 +1,31 @@
+/**
+ * customize css
+ */
+
+.animate-if.ng-enter, .animate-if.ng-leave {
+  -webkit-transition: 2s linear all;
+  -moz-transition: 2s linear all;
+  -ms-transition: 2s linear all;
+  -o-transition: 2s linear all;
+  transition: 2s linear all;
+}
+/* du début de l'entrée */
+ .animate-if.ng-enter {
+  max-height: 0;
+  opacity: 0;
+}
+/* à la fin de l'entrée */
+ .animate-if.ng-enter.ng-enter-active {
+  max-height: 999px;
+  opacity: 1;
+}
+/* du début de la sortie */
+ .animate-if.ng-leave {
+  max-height: 999px;
+  opacity: 1;
+}
+/* à la fin de la sortie */
+ .animate-if.ng-leave.ng-leave-active {
+  max-height: 0;
+  opacity: 1;
+}

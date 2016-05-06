@@ -1,0 +1,125 @@
+<?php
+
+/**
+ * class
+   $JsonDataUnit = new JsonDataUnit();
+   $JsonDataUnit->termCityJsonFile();
+   $JsonDataUnit->userSpeakerDetails();
+ *
+ */
+class JsonDataUnit{
+
+  /** - - - - - Node Json- - - - - - - - - - - - - - - */
+
+
+  /** - - - - - page - - - - - - - - - - - - - - - - - - - - - - */
+  /**
+   * @return
+   */
+  public function jobboardJobsMap($nids = array()) {
+    $nodes = node_load_multiple($nids);
+
+    $output = array();
+    foreach ($nodes as $key => $node) {
+      $JobsInfo = new JobsInfo($node->nid);
+
+      if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
+        $output[] = array(
+          "latitude" => $JobsInfo->latitude(),
+          "longitude" => $JobsInfo->longitude(),
+          "nodeTitle"  => $JobsInfo->nodeTitle(),
+        );
+      }
+    }
+    return $output;
+  }
+
+  /** - - - - - Term Standard Json- - - - - - - - - - - - - - - - - - - - - - */
+  /**
+   * @return Term Array data by specify VID
+   */
+  public function termStandardJson($vid = NULL, $class_name = NULL, $basic = NULL) {
+    if ($class_name) {
+      $all_term_array = taxonomy_get_tree($vid);
+
+      if (is_array($all_term_array)) {
+        foreach ($all_term_array as $term_key => $term_row) {
+          // $TermProgramInfo = new TermProgramInfo($term_row->tid);
+          $TermClassInfo = new $class_name($term_row->tid);
+
+          if ($basic) {
+            $output[] = $TermClassInfo->basicMethodsValue();
+          }
+          else {
+            $output[] = $TermClassInfo->allMethodsValue();
+          }
+        }
+      }
+    }
+
+    return $output;
+  }
+
+  /** - - - - - Term True - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+
+  /** - - - - - Query Table Json- - - - - - - - - - - - - - - - - - - - -   */
+
+
+  /** - - - - - User - - - - - - -- - - - - - - - - - - - - - - - - - - -   */
+
+}
+
+/**
+ * class
+   $JsonData = new JsonData();
+   $JsonData->sourceArrayData();
+ *
+ */
+class JsonData extends JsonDataUnit {
+
+  /** - - - - - - page - - - - - - - - - - - - - - - - - - - - - - - -  */
+  /**
+   * @return Term Array data
+   */
+  public function jsonJobboardJobsMap() {
+    $NodeQuery = new NodeQuery();
+    $nids = $NodeQuery->nodesByBundle('jobs');
+
+    $output = $this->jobboardJobsMap($nids);
+    return $output;
+  }
+
+  /** - - - - - - Program - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+  /** - - - - - - user - - - - - - - - - - - - - - - - - - - - - - - -  */
+  /**
+   * @return Array data
+   */
+  public function jsonUserList() {
+    $output = NULL;
+
+    $output['userList'] = $this->allUserList();
+    $output['termBusinessUnit'] = $this->termBusinessUnit();
+    $output['termCity'] = $this->termCityArrayFile();
+    $output['termProvince'] = $this->termProvince();
+    $output['termTherapeuticArea'] = $this->termTherapeuticArea();
+
+    return $output;
+  }
+  /**
+   * @return Array data
+   */
+  public function jsonUserProfile($uid = NULL) {
+    $output = $this->userProfileFields($uid);
+    return $output;
+  }
+  /**
+   * @return Array data
+   */
+  public function jsonUserSpeakerDetails($uid = NULL) {
+    $output = $this->userSpeakerDetails($uid);
+    return $output;
+  }
+
+}
