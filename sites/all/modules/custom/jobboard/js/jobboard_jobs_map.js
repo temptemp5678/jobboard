@@ -78,9 +78,10 @@ jQuery(document).ready(function(){
   }
 
   /** - - - - - - - draw a polyline in Leaflet? - - - - - - - - - - - - - - - - - - - - - - - -  */
-  var pointA = new L.LatLng(42.33, -82.95);
-  var pointB = new L.LatLng(42.33, -82.85);
-  var pointList = [pointA, pointB];
+  var pointList = [
+    new L.LatLng(42.33, -82.95),
+    new L.LatLng(42.33, -82.85),
+  ];
 
   var firstpolyline = new L.Polyline(pointList, {
     color: 'red',
