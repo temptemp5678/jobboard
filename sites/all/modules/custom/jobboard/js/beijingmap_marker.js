@@ -6,29 +6,6 @@ jQuery(document).ready(function(){
   var plotlist;
   var plotlayers=[];
 
-  // function initmap() {
-  //   // set up the map, initialize the map object
-  //   map = new L.Map('mapid');
-
-  //   // create the tile layer with correct attribution
-  //   var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-
-  //   var osmAttrib = 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-
-  //   // Used L.tileLayer() to create a base layer of map tiles
-  //   var osm = new L.TileLayer(osmUrl, {
-  //     minZoom: 8,
-  //     maxZoom: 13,
-  //     attribution: osmAttrib
-  //   });
-
-  //   // setView() method to center the initial map
-  //   map.setView(new L.LatLng(42.32, -82.95), 11);
-  //   map.addLayer(osm);
-  // }
-
-  // initmap();
-
   // initialize the map
   // var map = L.map('mapid').setView([42.32, -82.95], 11);          // Windsor
   // var map = L.map('mapid').setView([42.35, -71.08], 11);          // Boston
@@ -42,37 +19,6 @@ jQuery(document).ready(function(){
      maxZoom: 17,
      minZoom: 6
    }).addTo(map);
-
-
-  // // load GeoJSON from an external file
-  // var geojsonFeature = [
-  //   {
-  //     "type": "Feature",
-  //     "properties": {
-  //         "name": "Coors Field",
-  //         "amenity": "Baseball Stadium",
-  //         "popupContent": "This is where the Rockies play!"
-  //     },
-  //     "geometry": {
-  //         "type": "Point",
-  //         "coordinates": [-82.95, 42.32]       // opposite
-  //     }
-  //   },
-  //   {
-  //     "type": "Feature",
-  //     "properties": {
-  //         "name": "Coors Field",
-  //         "amenity": "Baseball Stadium",
-  //         "popupContent": "This is where the Rockies play2!"
-  //     },
-  //     "geometry": {
-  //         "type": "Point",
-  //         "coordinates": [-82.98, 42.30]       // opposite
-  //     }
-  //   },
-
-  // ];
-  // L.geoJson(geojsonFeature).addTo(map);
 
   /** - - - - - - - Numbered Markers - - - - - - - - - - - - - - - - - - - - - - - -  */
   /**
@@ -121,7 +67,24 @@ jQuery(document).ready(function(){
   var beijingMarker1 = new L.Marker([39.8680001534,116.4951235621], {
     icon: new L.NumberedDivIcon({number: '1'})
   }).addTo(map);
-
+  var beijingMarker2 = new L.Marker([39.8697123562,116.4689510129], {
+    icon: new L.NumberedDivIcon({number: '2'})
+  }).addTo(map);
+  var beijingMarker3 = new L.Marker([39.8724295509,116.4073786290], {
+    icon: new L.NumberedDivIcon({number: '3'})
+  }).addTo(map);
+  var beijingMarker4 = new L.Marker([39.8977622583,116.3795603460], {
+    icon: new L.NumberedDivIcon({number: '4'})
+  }).addTo(map);
+  var beijingMarker5 = new L.Marker([39.9490800894,116.3429831306], {
+    icon: new L.NumberedDivIcon({number: '5'})
+  }).addTo(map);
+  var beijingMarker6 = new L.Marker([39.9394981960,116.3905858926], {
+    icon: new L.NumberedDivIcon({number: '6'})
+  }).addTo(map);
+  var beijingMarker7 = new L.Marker([39.939233, 116.422959], {
+    icon: new L.NumberedDivIcon({number: '7'})
+  }).addTo(map);
 
   /**
    *
@@ -134,11 +97,5 @@ jQuery(document).ready(function(){
    7. 北京簋街
    */
 
-  // var jsonUrl = basePathUrl + "jsoninfo/jobboard/jobs/geomap.geojson";
-  // jQuery.getJSON(jsonUrl, function(data){
-  //   console.log(data);
-  //   // add GeoJSON layer to the map once the file is loaded
-  //   L.geoJson(geojsonFeature).addTo(map);
-  // });
 
 });
