@@ -77,7 +77,7 @@ jQuery(document).ready(function(){
     }).addTo(map).bindPopup(windsorMarker[i].popupText);
   }
 
-  /** - - - - - - - draw a polyline in Leaflet? - - - - - - - - - - - - - - - - - - - - - - - -  */
+  /** - - - - - - - draw a polyline in Leaflet - - - - - - - - - - - - - - - - - - -  */
   var pointList = [
     new L.LatLng(42.33, -82.95),
     new L.LatLng(42.33, -82.85),
