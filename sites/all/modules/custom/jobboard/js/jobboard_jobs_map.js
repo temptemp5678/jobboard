@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
   var plotlayers=[];
 
   // initialize the map
-  var map = L.map('mapid').setView([42.26, -82.95], 12);          // Windsor
+  var map = L.map('mapid').setView([42.26, -82.95], 12);             // Windsor
   // var map = L.map('mapid').setView([42.35, -71.08], 11);          // Boston
   // var map = L.map('mapid').setView([39.911640, 116.401938], 12);  // Beijing
 
@@ -16,11 +16,11 @@ jQuery(document).ready(function(){
    {
      attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
      maxZoom: 17,
-     minZoom: 6
+     minZoom: 10
    }).addTo(map);
 
   /** - - - - - - - Numbered Markers - - - - - - - - - - - - - - - - - - - - - - - -  */
-  /**-+8
+  /**
    * Numbered Markers in Leaflet (JS Mapping)
    * https://gist.github.com/comp615/2288108
    */
@@ -58,6 +58,7 @@ jQuery(document).ready(function(){
     }
   });
   /** - - - - - - - Numbered Markers - - - - - - - - - - - - - - - - - - - - - - - -  */
+
   var windsorMarker = [
     {
       coordinates: [42.33, -82.95],
@@ -65,22 +66,28 @@ jQuery(document).ready(function(){
     },
     {
       coordinates: [42.31, -82.99],
-      popupText: "I am a polygon.",
+      popupText: "I am a polygon2.",
     }
   ];
 
+  // loop each point to add marker to map
   for (var i = 0; i < windsorMarker.length; i++) {
     new L.Marker(windsorMarker[i].coordinates, {
       icon: new L.NumberedDivIcon({number: (i + 1) })
-    }).addTo(map).bindPopup();
+    }).addTo(map).bindPopup(windsorMarker[i].popupText);
   }
 
+  /** - - - - - - - draw a polyline in Leaflet? - - - - - - - - - - - - - - - - - - - - - - - -  */
+  var pointA = new L.LatLng(42.33, -82.95);
+  var pointB = new L.LatLng(42.33, -82.85);
+  var pointList = [pointA, pointB];
 
-  // var jsonUrl = basePathUrl + "jsoninfo/jobboard/jobs/geomap.geojson";
-  // jQuery.getJSON(jsonUrl, function(data){
-  //   console.log(data);
-  //   // add GeoJSON layer to the map once the file is loaded
-  //   L.geoJson(geojsonFeature).addTo(map);
-  // });
+  var firstpolyline = new L.Polyline(pointList, {
+    color: 'red',
+    weight: 3,
+    opacity: 0.5,
+    smoothFactor: 1
+  });
+  firstpolyline.addTo(map);
 
 });
