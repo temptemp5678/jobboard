@@ -18,7 +18,7 @@ function jobboard_menu() {
   $items = array();
 
   $items['jobboard/jobs/list'] = array(
-    'title' => 'Report Summary',
+    'title' => 'List',
     'page callback' => '_jobboard_jobs_list',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
@@ -31,6 +31,14 @@ function jobboard_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
     'file' => 'inc/jobboard_jobs_map.page.inc',
+  );
+
+  $items['jobboard/jobs/dashboard'] = array(
+    'title' => 'Dashboard',
+    'page callback' => '_jobboard_jobs_dashboard',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jobboard_jobs_dashboard.page.inc',
   );
 
   return $items;
