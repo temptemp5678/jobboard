@@ -8,8 +8,8 @@
  * Implements hook_init()
  */
 function libraryinfo_init() {
-    drupal_add_library('libraryinfo', 'libraryinfo_angularjs');
-    drupal_add_library('libraryinfo', 'libraryinfo_font_awsome');
+  drupal_add_library('libraryinfo', 'libraryinfo_angularjs');
+  drupal_add_library('libraryinfo', 'libraryinfo_font_awsome');
 }
 
 /**

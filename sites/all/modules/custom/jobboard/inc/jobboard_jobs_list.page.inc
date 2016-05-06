@@ -4,6 +4,14 @@
  * Implements page_callback(), callback from hook_menu()
  */
 function _jobboard_jobs_list() {
+  /**
+   * js
+   */
+  drupal_add_js(drupal_get_path('module', 'orderinfo') .'/ng_js/orderinfo_summary_index.js');
+
+  /**
+   * output
+   */
   $output = '';
   $output .= '<div class="panel panel-default">';
     $output .= '<div class="panel-heading">' . t('Top Product') . '</div>';
@@ -12,12 +20,90 @@ function _jobboard_jobs_list() {
     $output .=' </div>';
   $output .=' </div>';
 
-  $output .= '<div class="panel panel-default">';
-    $output .= '<div class="panel-heading">Product</div>';
-    $output .= '<div class="panel-body bg-ffffff padding-0">';
-      $output .= '<canvas class="padding-6-12" id="reportpage-summary-quote-line-chart" width="390" height="150"></canvas>';
-    $output .=' </div>';
-  $output .=' </div>';
+  $output .= '<div data-ng-app="orderSummary" class="row margin-0">';
+    $output .= '<div data-ng-controller="orderSummaryController" class="row margin-0">';
+
+      /**
+       * selected order
+       */
+      $output .= '<div data-ng-if="selectedOrders.length" class="margin-bottom-12 animate-if">';
+
+        // selected table
+        $output .= '<div class="">';
+          $output .= '<table class="table table-hover">';
+            $output .= '<tr data-ng-repeat="item in selectedOrders track by $index">';
+              $output .= '<td>{{ $index + 1 }}</td>';
+              $output .= '<td>{{ item.dateValue }}</td>';
+              $output .= '<td>{{ item.nodeTitle }}</td>';
+              $output .= '<td>{{ item.productsTotalAmount }}</td>';
+              $output .= '<td>{{ item.nodeUidName }}</td>';
+              $output .= '<td data-ng-click="removeOrderList($index)" class="cursor-pointer"><i class="fa fa-minus fa-lg"></i></a></td>';
+            $output .= '</tr>';
+          $output .= '</table>';
+        $output .= '</div>';
+
+        // button
+        $output .= '<div class="float-left margin-bottom-12">';
+          $output .= '<div class="margin-left-12">';
+            $output .= '<span class="btn btn-primary" data-ng-click="toQuoteBtn()">To Quote</span>';
+          $output .= '</div>';
+        $output .= '</div>';
+
+      $output .= '</div>';
+
+      /**
+       * Order header
+       */
+      $output .= '<div class="clear-both margin-top-12">';
+        // filter
+        $output .= '<span class="">';
+          $output .= t('Search') . ': <input data-ng-model="inputFilter.$">';
+        $output .= '</span>';
+
+        // daterangepicker_controller
+        $output .= '<span class="">';
+          // $output .= DashDateRangePicker::dateRangePickerHeader();
+        $output .= '</span>';
+      $output .= '</div>';
+
+      /**
+       * Order table
+       */
+      $output .= '<div class="margin-top-12">';
+        $output .= '<table class="table table-hover">';
+            $output .= '<thead>';
+              $output .= '<tr>';
+                $output .= '<th><a href="" data-ng-click="sortField = \'orderDate\' ; reverse= !reverse ">' . t('Date') . '</a></th>';
+                $output .= '<th>' . t('Title') . '</th>';
+                $output .= '<th><a href="" data-ng-click="sortField = \'amount\' ; reverse= !reverse ">' . t('Amount') . '</a></th>';
+                $output .= '<th><a href="" data-ng-click="sortField = \'author\' ; reverse= !reverse ">' . t('User') . '</a></th>';
+                $output .= '<th></th>';
+                $output .= '<th></th>';
+                $output .= '<th></th>';
+              $output .= '</tr>';
+            $output .= '</thead>';
+
+          $output .= '<tbody data-ng-repeat="row in orderTableRow | filter:inputFilter | orderBy:sortField:reverse">';
+            $output .= '<tr>';
+              $output .= '<td>{{ row.dateValue }}</td>';
+              $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">{{ row.nodeTitle }}</td>';
+              $output .= '<td>{{ row.productsTotalAmount | currency:"￥" }}</td>';
+              $output .= '<td>{{ row.nodeUidName }}</td>';
+              $output .= '<td><a href="{{ row.nodeViewLink }}"><i class="fa fa-external-link fa-lg"></i></a></td>';
+              $output .= '<td><a href="{{ row.nodeEditLink }}?destination=order/summary/index"><i class="fa fa-pencil-square-o fa-lg color-767676"></i></a></td>';
+              $output .= '<td data-ng-click="addOrderList(row)" class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';
+            $output .= '</tr>';
+
+            $output .= '<tr>';
+              $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.productsSetHtmlList)"></td>';
+            $output .= '</tr>';
+          $output .= '</tbody>';
+
+        $output .= '</table>';
+      $output .= '</div>';
+
+    $output .= '</div>';
+  $output .= '</div>';
 
   return $output;
 }

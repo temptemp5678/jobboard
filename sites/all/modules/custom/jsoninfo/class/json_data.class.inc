@@ -16,6 +16,26 @@ class JsonDataUnit{
   /**
    * @return
    */
+  public function jobboardJobsList($nids = array()) {
+    $nodes = node_load_multiple($nids);
+
+    $output = array();
+    foreach ($nodes as $key => $node) {
+      $JobsInfo = new JobsInfo($node->nid);
+
+      if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
+        $output[] = array(
+          "latitude" => $JobsInfo->latitude(),
+          "longitude" => $JobsInfo->longitude(),
+          "nodeTitle"  => $JobsInfo->nodeTitle(),
+        );
+      }
+    }
+    return $output;
+  }
+  /**
+   * @return
+   */
   public function jobboardJobsMap($nids = array()) {
     $nodes = node_load_multiple($nids);
 
@@ -79,6 +99,17 @@ class JsonDataUnit{
 class JsonData extends JsonDataUnit {
 
   /** - - - - - - page - - - - - - - - - - - - - - - - - - - - - - - -  */
+  /**
+   * @return Term Array data
+   */
+  public function jsonJobboardJobsList() {
+    $NodeQuery = new NodeQuery();
+    $nids = $NodeQuery->nodesByBundle('jobs');
+
+    $output = $this->jobboardJobsList($nids);
+    return $output;
+  }
+
   /**
    * @return Term Array data
    */

@@ -22,6 +22,13 @@ function jsoninfo_menu() {
    * custom page
    */
   /** - - - - - - - page - - - - - - - - - - - - - - - - - - - - - - - -  */
+  $items['jsoninfo/jobboard/jobs/list'] = array(
+    'title' => 'Create JSON',
+    'page callback' => '_jsoninfo_jobboard_jobs_list',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+    'file' => 'inc/jsoninfo_api_page.page.inc',
+  );
   $items['jsoninfo/jobboard/jobs/map'] = array(
     'title' => 'Create JSON',
     'page callback' => '_jsoninfo_jobboard_jobs_map',
