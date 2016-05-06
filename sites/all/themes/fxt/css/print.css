@@ -1,0 +1,22 @@
+@page {
+  size: auto;   /* auto is the initial value */
+  margin: 0mm;  /* this affects the margin in the printer settings */
+}
+
+/* hide page header and bottom */
+body {
+  background-color:#FFFFFF;
+  /*border: solid 1px black ;*/
+  margin: 0px;  /* the margin on the content before printing */
+}
+
+.print-font-size-9 {
+  font-size: 9px;
+}
+.print-font-size-8 {
+  font-size: 8px;
+}
+
+.footer.container {
+  border-top: none;
+}

@@ -2,3 +2,114 @@
  * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
  * remove this comment and start adding your styles to this file.
  */
+
+/**
+ * body
+ */
+body {
+   background-color: #e6e8e9;;
+   color: #707070;
+}
+
+/**
+ * header
+ */
+body > .navbar {
+  border-radius: 0;
+  margin-bottom: 0px;
+  -webkit-box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.2), 2px -2px 6px 0px rgba(0, 0, 0, 0.12), -2px -2px 6px 0px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.2), 2px -2px 6px 0px rgba(0, 0, 0, 0.12), -2px -2px 6px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 2px -2px 6px 0px rgba(0, 0, 0, 0.12), -2px -2px 6px 0px rgba(0, 0, 0, 0.12);
+}
+
+/**
+ * logo
+ */
+.navbar-header .logo img {
+  height: 34px;
+}
+
+.block-commerce-cart {
+  font-size: 12px;
+}
+
+.block-commerce-cart h2{
+  font-size: 16px;
+}
+
+ /*my account*/
+.navbar-collapse .navbar-nav.secondary li.first {
+  display: none;
+}
+
+/**
+ * Language switcher Icon
+ */
+#navbar .region-navigation .language-switcher-locale-url {
+  float: right;
+  margin-top: 12px;
+}
+#navbar .region-navigation .language-switcher-locale-url li {
+  list-style-type: none;
+  float: left;
+  margin-right: 16px;
+}
+
+/**
+ * content
+ */
+.main-container.container > .row{
+  background-color: #f0f0f0;
+  background-color: #f3f3f3;
+  -webkit-box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.2), 2px -2px 6px 0px rgba(0, 0, 0, 0.12), -2px -2px 6px 0px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.2), 2px -2px 6px 0px rgba(0, 0, 0, 0.12), -2px -2px 6px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.2), 2px -2px 6px 0px rgba(0, 0, 0, 0.12), -2px -2px 6px 0px rgba(0, 0, 0, 0.12);
+  margin: 0;
+}
+
+.main-container.container > .row > .col-sm-9,
+.main-container.container > .row > .col-sm-12 {
+  background-color: #ffffff;
+  min-height: 460px;
+}
+
+.main-container.container .region.region-content{
+  background-color: #ffffff;
+  padding: 24px 12px 12px;
+}
+
+.main-container.container h1.page-header {
+  display: none;
+}
+.main-container.container ol.breadcrumb {
+  display: none;
+}
+
+/**
+ * language flag icon on content page
+ */
+img.language-icon {
+  height: 12px;
+}
+
+/**
+ * side bar
+ */
+.main-container.container > .row > .col-sm-3 {
+  padding: 15px;
+}
+
+/**
+ * footer
+ */
+.footer.container{
+  margin-top: 0;
+  padding: 0 15px;
+ }
+.footer.container > .region-footer {
+  background: #4c4c4c;
+  margin: 0 auto;
+  padding: 55px 20px 55px;
+  font-size: 12px;
+  color: #fff;
+}

@@ -1,0 +1,35 @@
+/**
+ * other CSS
+ */
+h1,.h1{font-size:20px}
+h2,.h2{font-size:18px}
+h3,.h3{font-size:16px}
+
+body .navbar {
+ /* margin-bottom: 0px; */
+}
+
+body {
+  font-family: Verdana,"Microsoft Yahei","微软雅黑",Arial,Helvetica,clean,sans-serif,STXihei,"华文细黑" !important;
+  font-size: 12px;
+}
+body .btn,
+body .form-control{
+  font-family: Verdana,"Microsoft Yahei","微软雅黑",Arial,Helvetica,clean,sans-serif,STXihei,"华文细黑" !important;
+  font-size: 12px;
+}
+body .panel-title{
+  font-size: 14px;
+}
+
+
+body .btn.btn-primary {
+}
+
+
+/**
+ * override angularjs materials
+ */
+body .md-tab{
+  font-size: 12px;
+}
