@@ -58,12 +58,23 @@ jQuery(document).ready(function(){
     }
   });
   /** - - - - - - - Numbered Markers - - - - - - - - - - - - - - - - - - - - - - - -  */
+  var windsorMarker = [
+    {
+      coordinates: [42.33, -82.95],
+      popupText: "I am a polygon.",
+    },
+    {
+      coordinates: [42.31, -82.99],
+      popupText: "I am a polygon.",
+    }
+  ];
 
-  var windsorMarker1 = new L.Marker([42.33, -82.95], {
-    icon: new L.NumberedDivIcon({number: '2'})
-  }).addTo(map);
+  for (var i = 0; i < windsorMarker.length; i++) {
+    new L.Marker(windsorMarker[i].coordinates, {
+      icon: new L.NumberedDivIcon({number: (i + 1) })
+    }).addTo(map).bindPopup();
+  }
 
-  windsorMarker1.bindPopup("I am a polygon.");
 
   // var jsonUrl = basePathUrl + "jsoninfo/jobboard/jobs/geomap.geojson";
   // jQuery.getJSON(jsonUrl, function(data){
