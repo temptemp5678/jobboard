@@ -260,8 +260,8 @@ class JobsInfo extends NodeInfo {
    */
   public function datePostedTimeUnixStamp() {
     $output = NULL;
-    if (isset($this->node->field_quote_datetime['und'][0]['value'])) {
-      $output = $this->node->field_quote_datetime['und'][0]['value'];
+    if (isset($this->node->field_jobs_date_posted['und'][0]['value'])) {
+      $output = $this->node->field_jobs_date_posted['und'][0]['value'];
     }
     return $output;
   }

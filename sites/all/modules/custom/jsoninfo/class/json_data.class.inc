@@ -25,6 +25,7 @@ class JsonDataUnit{
 
       if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
         $output[] = array(
+          "datePostedTimeValue" => $JobsInfo->datePostedTimeValue(),
           "latitude" => $JobsInfo->latitude(),
           "longitude" => $JobsInfo->longitude(),
           "nodeTitle"  => $JobsInfo->nodeTitle(),
@@ -79,8 +80,6 @@ class JsonDataUnit{
 
     return $output;
   }
-
-  /** - - - - - Term True - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
   /** - - - - - Query Table Json- - - - - - - - - - - - - - - - - - - - -   */

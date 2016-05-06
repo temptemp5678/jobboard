@@ -3,16 +3,32 @@
  */
 var basePathUrl = Drupal.settings.basePath;
 
-var app = angular.module('orderSummary', ['ngAnimate']);
-app.controller('orderSummaryController', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
+var app = angular.module('jobboardJobsList', ['ngAnimate']);
 
-  $http.get(basePathUrl + 'jsoninfo/jobboard/jobs/list')
-    .success(function (data) {
-       $scope.orderTableRow = data.nodes.order;
-    })
-    .error(function (data, status, headers, config) {
-       //  Do some error handling here
-    });
+// get JSON data
+app.factory("mainData", ['$http', function($http) {
+  var obj = {};
+
+  var jsonfile = basePathUrl + 'jsoninfo/jobboard/jobs/list';
+
+  // multiple language for products json file
+  obj.fetchPageJson = function() {
+    return $http.get(jsonfile);
+  }
+
+  return obj;
+}]);
+
+app.controller('jobboardJobsListController', ['$scope', '$http', '$sce', 'mainData', function($scope, $http, $sce, mainData) {
+
+  mainData.fetchPageJson().success(function(data) {
+    console.log(data);
+    $scope.tableRow = data;
+
+  })
+  .error(function (data, status, headers, config) {
+     //  Do some error handling here
+  });
 
   /**
    * hover show row details

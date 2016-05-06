@@ -7,7 +7,7 @@ function _jobboard_jobs_list() {
   /**
    * js
    */
-  drupal_add_js(drupal_get_path('module', 'orderinfo') .'/ng_js/orderinfo_summary_index.js');
+  drupal_add_js(drupal_get_path('module', 'jobboard') .'/ng_js/jobboard_jobs_list.ng.js');
 
   /**
    * output
@@ -20,8 +20,8 @@ function _jobboard_jobs_list() {
     $output .=' </div>';
   $output .=' </div>';
 
-  $output .= '<div data-ng-app="orderSummary" class="row margin-0">';
-    $output .= '<div data-ng-controller="orderSummaryController" class="row margin-0">';
+  $output .= '<div data-ng-app="jobboardJobsList" class="row margin-0">';
+    $output .= '<div data-ng-controller="jobboardJobsListController" class="row margin-0">';
 
       /**
        * selected order
@@ -83,9 +83,9 @@ function _jobboard_jobs_list() {
               $output .= '</tr>';
             $output .= '</thead>';
 
-          $output .= '<tbody data-ng-repeat="row in orderTableRow | filter:inputFilter | orderBy:sortField:reverse">';
+          $output .= '<tbody data-ng-repeat="row in tableRow | filter:inputFilter | orderBy:sortField:reverse">';
             $output .= '<tr>';
-              $output .= '<td>{{ row.dateValue }}</td>';
+              $output .= '<td>{{ row.datePostedTimeValue }}</td>';
               $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">{{ row.nodeTitle }}</td>';
               $output .= '<td>{{ row.productsTotalAmount | currency:"￥" }}</td>';
               $output .= '<td>{{ row.nodeUidName }}</td>';
