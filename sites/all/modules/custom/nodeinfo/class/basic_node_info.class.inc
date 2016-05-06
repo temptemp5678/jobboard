@@ -211,6 +211,28 @@ class NodeInfo {
     $output = base_path() . $this->nodeType() . '/node/view/' . $this->nid;
     return $output;
   }
+
+  /** - - - - - - basic field value - - - - - - - - - - - - - - - - - - - - - - - -  */
+  /**
+   * @return value
+   */
+  public function fieldTargetId($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['target_id'])) {
+      $output = $this->node->{$field_name}['und'][0]['target_id'];
+    }
+    return $output;
+  }
+  /**
+   * @return value
+   */
+  public function fieldValue($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['value'])) {
+      $output = $this->node->{$field_name}['und'][0]['value'];
+    }
+    return $output;
+  }
 }
 
 /** - - - - - - common node - - - - - - - - - - - - - - - - - - - - - - - -  */
@@ -303,12 +325,24 @@ class JobsInfo extends NodeInfo {
   }
 
   /**
-   * @return float, Total Price
+   * @return Integer, Term Tid
    */
-  public function totalPrice() {
+  public function townTid() {
     $output = NULL;
-    if (isset($this->node->field_quote_total_price['und'][0]['value'])) {
-      $output = $this->node->field_quote_total_price['und'][0]['value'];
+    if (isset($this->node->field_jobs_town['und'][0]['target_id'])) {
+      $output = $this->node->field_jobs_town['und'][0]['target_id'];
+    }
+    return $output;
+  }
+  /**
+    * @return String, Term Property
+    */
+  public function townName() {
+    $output = NULL;
+
+    $TermInfo = new TermInfo($this->townTid());
+    if(!empty($TermInfo)) {
+      $output = $TermInfo->termName();
     }
     return $output;
   }

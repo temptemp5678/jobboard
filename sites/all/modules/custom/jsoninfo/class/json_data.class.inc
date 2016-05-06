@@ -29,6 +29,7 @@ class JsonDataUnit{
           "latitude" => $JobsInfo->latitude(),
           "longitude" => $JobsInfo->longitude(),
           "nodeTitle"  => $JobsInfo->nodeTitle(),
+          "townName"  => $JobsInfo->townName(),
         );
       }
     }
