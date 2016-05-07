@@ -216,6 +216,17 @@ class NodeInfo {
   /**
    * @return value
    */
+  public function fieldSafeValue($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['safe_value'])) {
+      $output = $this->node->{$field_name}['und'][0]['safe_value'];
+    }
+    return $output;
+  }
+
+  /**
+   * @return value
+   */
   public function fieldTargetId($field_name = '') {
     $output = NULL;
     if (isset($this->node->{$field_name}['und'][0]['target_id'])) {
@@ -237,6 +248,7 @@ class NodeInfo {
     }
     return $output;
   }
+
   /**
    * @return value
    */

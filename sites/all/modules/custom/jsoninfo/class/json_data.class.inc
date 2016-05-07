@@ -18,7 +18,7 @@ class JsonDataUnit{
    */
   public function jobboardJobsList($nids = array()) {
     $nodes = node_load_multiple($nids);
-dpm($nodes);
+
     $output = array();
     foreach ($nodes as $key => $node) {
       $JobsInfo = new JobsInfo($node->nid);
@@ -27,8 +27,7 @@ dpm($nodes);
       }
 
       $output[] = array(
-        "body"  => $JobsInfo->fieldValue('body'),
-        "description"  => $JobsInfo->fieldValue('field_jobs_description'),
+        "description"  => $JobsInfo->fieldSafeValue('field_jobs_description'),
         "careerLevel"  => $JobsInfo->fieldTargetIdObject('field_jobs_career_level')->termName(),
         "datePostedTimeValue" => $JobsInfo->datePostedTimeValue(),
         "nodeNid"  => $JobsInfo->nodeNid(),

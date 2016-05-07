@@ -23,16 +23,20 @@ jQuery(document).ready(function() {
   // var allProductTable = fetchJson(jsonFilePath);
   var allProductTable = [
     {
+      nodeTitle: 'Any',
+      topPriority: 16,
+    },
+    {
       nodeTitle: 'Entry Level',
       topPriority: 12,
     },
     {
       nodeTitle: 'Executive',
-      topPriority: 22,
+      topPriority: 5,
     },
     {
       nodeTitle: 'Experienced',
-      topPriority: 18,
+      topPriority: 10,
     },
     {
       nodeTitle: 'Management',
@@ -48,7 +52,7 @@ jQuery(document).ready(function() {
   var chartjsDataLabel = [];
   var chartjsDataValue = [];
 
-  for (var i = 0; i < 5; i++) {
+  for (var i = 0; i < allProductTable.length; i++) {
     chartjsDataLabel.push(allProductTable[i].nodeTitle);
     chartjsDataValue.push(allProductTable[i].topPriority);
   }
@@ -72,7 +76,7 @@ jQuery(document).ready(function() {
   var options = {
     animation: true,
     barShowStroke : false,
-    barValueSpacing : 80,
+    barValueSpacing : 60,
     responsive: true
   };
 
@@ -86,7 +90,7 @@ jQuery(document).ready(function() {
   myBarChart.datasets[0].bars[2].fillColor = "#e72682"; //bar 3
   myBarChart.datasets[0].bars[3].fillColor = "#edc351"; //bar 3
   myBarChart.datasets[0].bars[4].fillColor = "#aac1cc"; //bar 3
-  // myBarChart.datasets[0].bars[5].fillColor = "#b6da52"; //bar 3
+  myBarChart.datasets[0].bars[5].fillColor = "#b6da52"; //bar 3
   // myBarChart.datasets[0].bars[6].fillColor = "#3da5e7"; //bar 3
   // myBarChart.datasets[0].bars[7].fillColor = "#edc351"; //bar 3
   myBarChart.update();
@@ -101,7 +105,7 @@ jQuery(document).ready(function() {
     labels: ["2015-Q1", "2015-Q2", "2015-Q3", "2015-Q4", "2016-Q1"],
       datasets: [
       {
-        label: "Harmonic",
+        label: "IT",
         fillColor: "rgba(0,0,0,0)",
         strokeColor: "#b6da52",
         pointColor: "#b6da52",
@@ -111,7 +115,7 @@ jQuery(document).ready(function() {
         data: [60, 59, 80, 81, 56,]
       },
       {
-        label: "NVION",
+        label: "Business",
         fillColor: "rgba(0,0,0,0)",
         strokeColor: "#3da5e7",
         pointColor: "#3da5e7",
@@ -121,7 +125,7 @@ jQuery(document).ready(function() {
         data: [28, 45, 78, 49, 84,]
       },
       {
-        label: "Harris",
+        label: "Automotive",
         fillColor: "rgba(0,0,0,0)",
         strokeColor: "#e72682",
         pointColor: "#e72682",
@@ -131,7 +135,7 @@ jQuery(document).ready(function() {
         data: [65, 59, 50, 61, 56,]
       },
       {
-        label: "LiveU",
+        label: "Retail",
         fillColor: "rgba(0,0,0,0)",
         strokeColor: "#aac1cc",
         pointColor: "#aac1cc",

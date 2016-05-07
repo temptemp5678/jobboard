@@ -84,11 +84,13 @@ function _jobboard_jobs_list() {
               $output .= '<td>{{ row.industry }}</td>';
               $output .= '<td>{{ row.careerLevel }}</td>';
               // $output .= '<td><a href="{{ row.nodeViewLink }}"><i class="fa fa-external-link fa-lg"></i></a></td>';
-              $output .= '<td data-ng-click="addOrderList(row)" class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';
+              // $output .= '<td data-ng-click="addOrderList(row)" class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';
+              $output .= '<td class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';
             $output .= '</tr>';
 
             $output .= '<tr>';
               $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.description)"></td>';
+              // $output .= '<td colspan="100%" data-ng-show="hoverInStatus">{{row.description}}</td>';
             $output .= '</tr>';
           $output .= '</tbody>';
 
