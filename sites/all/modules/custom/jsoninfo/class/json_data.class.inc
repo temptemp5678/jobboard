@@ -29,7 +29,8 @@ class JsonDataUnit{
           "latitude" => $JobsInfo->latitude(),
           "longitude" => $JobsInfo->longitude(),
           "nodeTitle"  => $JobsInfo->nodeTitle(),
-          "townName"  => $JobsInfo->townName(),
+          "town"  => $JobsInfo->fieldTargetIdObject('field_jobs_town')->termName(),
+          "careerLevel"  => $JobsInfo->fieldTargetIdObject('field_jobs_career_level')->termName(),
         );
       }
     }

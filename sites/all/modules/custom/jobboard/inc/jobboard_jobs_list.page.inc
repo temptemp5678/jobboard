@@ -76,7 +76,7 @@ function _jobboard_jobs_list() {
                 $output .= '<th><a href="" data-ng-click="sortField = \'orderDate\' ; reverse= !reverse ">' . t('Date') . '</a></th>';
                 $output .= '<th>' . t('Title') . '</th>';
                 $output .= '<th><a href="" data-ng-click="sortField = \'amount\' ; reverse= !reverse ">' . t('Town') . '</a></th>';
-                $output .= '<th><a href="" data-ng-click="sortField = \'author\' ; reverse= !reverse ">' . t('User') . '</a></th>';
+                $output .= '<th><a href="" data-ng-click="sortField = \'author\' ; reverse= !reverse ">' . t('Career Level') . '</a></th>';
                 $output .= '<th></th>';
                 $output .= '<th></th>';
                 $output .= '<th></th>';
@@ -87,8 +87,8 @@ function _jobboard_jobs_list() {
             $output .= '<tr>';
               $output .= '<td>{{ row.datePostedTimeValue }}</td>';
               $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">{{ row.nodeTitle }}</td>';
-              $output .= '<td>{{ row.townName }}</td>';
-              $output .= '<td>{{ row.nodeUidName }}</td>';
+              $output .= '<td>{{ row.town }}</td>';
+              $output .= '<td>{{ row.careerLevel }}</td>';
               $output .= '<td><a href="{{ row.nodeViewLink }}"><i class="fa fa-external-link fa-lg"></i></a></td>';
               $output .= '<td><a href="{{ row.nodeEditLink }}?destination=order/summary/index"><i class="fa fa-pencil-square-o fa-lg color-767676"></i></a></td>';
               $output .= '<td data-ng-click="addOrderList(row)" class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';

@@ -226,6 +226,20 @@ class NodeInfo {
   /**
    * @return value
    */
+  public function fieldTargetIdObject($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['target_id'])) {
+
+      $TermInfo = new TermInfo($this->node->{$field_name}['und'][0]['target_id']);
+      if(!empty($TermInfo)) {
+        $output = $TermInfo;
+      }
+    }
+    return $output;
+  }
+  /**
+   * @return value
+   */
   public function fieldValue($field_name = '') {
     $output = NULL;
     if (isset($this->node->{$field_name}['und'][0]['value'])) {
@@ -329,9 +343,10 @@ class JobsInfo extends NodeInfo {
    */
   public function townTid() {
     $output = NULL;
-    if (isset($this->node->field_jobs_town['und'][0]['target_id'])) {
-      $output = $this->node->field_jobs_town['und'][0]['target_id'];
-    }
+    $output = $this->fieldTargetId('field_jobs_town');
+    // if (isset($this->node->field_jobs_town['und'][0]['target_id'])) {
+    //   $output = $this->node->field_jobs_town['und'][0]['target_id'];
+    // }
     return $output;
   }
   /**
