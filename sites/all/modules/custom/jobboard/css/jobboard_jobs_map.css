@@ -18,3 +18,8 @@
   width: 26px;
   text-align: center;
 }
+
+.panel-default .panel-heading.bg-4ab2de {
+  background-color: #4ab2de;
+  color: #ffffff;
+}

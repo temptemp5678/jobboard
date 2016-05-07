@@ -12,8 +12,8 @@ function _jobboard_jobs_map() {
 
   $output = '';
   $output .= '<div class="panel panel-default">';
-    $output .= '<div class="panel-heading">';
-      $output .= '1. 北京欢乐谷 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    $output .= '<div class="panel-heading bg-4ab2de color-fff">';
+      $output .= 'Job Map';
     $output .='</div>';
     $output .= '<div class="panel-body bg-ffffff padding-0">';
       $output .= '<div class="leaflet-map-wrapper">';
