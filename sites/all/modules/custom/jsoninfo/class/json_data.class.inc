@@ -18,22 +18,25 @@ class JsonDataUnit{
    */
   public function jobboardJobsList($nids = array()) {
     $nodes = node_load_multiple($nids);
-
+dpm($nodes);
     $output = array();
     foreach ($nodes as $key => $node) {
       $JobsInfo = new JobsInfo($node->nid);
 
       if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
-        $output[] = array(
-          "body"  => $JobsInfo->fieldValue('body'),
-          "careerLevel"  => $JobsInfo->fieldTargetIdObject('field_jobs_career_level')->termName(),
-          "datePostedTimeValue" => $JobsInfo->datePostedTimeValue(),
-          "nodeTitle"  => $JobsInfo->nodeTitle(),
-          "nodeViewLink"  => $JobsInfo->nodeViewLink(),
-          "town"  => $JobsInfo->fieldTargetIdObject('field_jobs_town')->termName(),
-          "industry"  => $JobsInfo->fieldTargetIdObject('field_jobs_industry')->termName(),
-        );
       }
+
+      $output[] = array(
+        "body"  => $JobsInfo->fieldValue('body'),
+        "description"  => $JobsInfo->fieldValue('field_jobs_description'),
+        "careerLevel"  => $JobsInfo->fieldTargetIdObject('field_jobs_career_level')->termName(),
+        "datePostedTimeValue" => $JobsInfo->datePostedTimeValue(),
+        "nodeNid"  => $JobsInfo->nodeNid(),
+        "nodeTitle"  => $JobsInfo->nodeTitle(),
+        "nodeViewLink"  => $JobsInfo->nodeViewLink(),
+        "town"  => $JobsInfo->fieldTargetIdObject('field_jobs_town')->termName(),
+        "industry"  => $JobsInfo->fieldTargetIdObject('field_jobs_industry')->termName(),
+      );
     }
     return $output;
   }

@@ -88,7 +88,7 @@ function _jobboard_jobs_list() {
             $output .= '</tr>';
 
             $output .= '<tr>';
-              $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.body)"></td>';
+              $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.description)"></td>';
             $output .= '</tr>';
           $output .= '</tbody>';
 
