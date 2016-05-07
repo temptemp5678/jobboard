@@ -23,20 +23,19 @@ class JsonDataUnit{
     foreach ($nodes as $key => $node) {
       $JobsInfo = new JobsInfo($node->nid);
 
-      if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
+      if ($JobsInfo->fieldValue('field_jobs_latitude') && $JobsInfo->fieldValue('field_jobs_longitude')) {
+        $output[] = array(
+          "description"  => $JobsInfo->fieldSafeValue('field_jobs_description'),
+          "careerLevel"  => $JobsInfo->fieldTargetIdObject('field_jobs_career_level')->termName(),
+          "datePostedTimeValue" => $JobsInfo->datePostedTimeValue(),
+          "nodeNid"  => $JobsInfo->nodeNid(),
+          "nodeTitle"  => $JobsInfo->nodeTitle(),
+          "nodeViewLink"  => $JobsInfo->nodeViewLink(),
+          "jobType"  => $JobsInfo->fieldTargetIdObject('field_jobs_job_type')->termName(),
+          "town"  => $JobsInfo->fieldTargetIdObject('field_jobs_town')->termName(),
+          "industry"  => $JobsInfo->fieldTargetIdObject('field_jobs_industry')->termName(),
+        );
       }
-
-      $output[] = array(
-        "description"  => $JobsInfo->fieldSafeValue('field_jobs_description'),
-        "careerLevel"  => $JobsInfo->fieldTargetIdObject('field_jobs_career_level')->termName(),
-        "datePostedTimeValue" => $JobsInfo->datePostedTimeValue(),
-        "nodeNid"  => $JobsInfo->nodeNid(),
-        "nodeTitle"  => $JobsInfo->nodeTitle(),
-        "nodeViewLink"  => $JobsInfo->nodeViewLink(),
-        "jobType"  => $JobsInfo->fieldTargetIdObject('field_jobs_job_type')->termName(),
-        "town"  => $JobsInfo->fieldTargetIdObject('field_jobs_town')->termName(),
-        "industry"  => $JobsInfo->fieldTargetIdObject('field_jobs_industry')->termName(),
-      );
     }
     return $output;
   }
@@ -50,11 +49,10 @@ class JsonDataUnit{
     foreach ($nodes as $key => $node) {
       $JobsInfo = new JobsInfo($node->nid);
 
-      if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
+      if ($JobsInfo->fieldValue('field_jobs_latitude') && $JobsInfo->fieldValue('field_jobs_longitude')) {
         $output[] = array(
-          "latitude" => $JobsInfo->latitude(),
-          "longitude" => $JobsInfo->longitude(),
-          "nodeTitle"  => $JobsInfo->nodeTitle(),
+          "coordinates" => array($JobsInfo->fieldValue('field_jobs_latitude'), $JobsInfo->fieldValue('field_jobs_longitude')),
+          "popupText"  => $JobsInfo->nodeTitle(),
         );
       }
     }

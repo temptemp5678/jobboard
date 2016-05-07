@@ -61,22 +61,22 @@ function _jobboard_jobs_list() {
       $output .= '</div>';
 
       /**
-       * Order table
+       * Job table
        */
       $output .= '<div class="margin-top-12">';
         $output .= '<table class="table table-hover">';
-            $output .= '<thead>';
-              $output .= '<tr>';
-                $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'datePostedTimeValue\' ; reverse= !reverse ">' . t('Date') . '</a></th>';
-                $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'jobTitle\' ; reverse= !reverse ">' . t('Job Title') . '</a></th>';
-                $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'town\' ; reverse= !reverse ">' . t('Town') . '</a></th>';
-                $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'industry\' ; reverse= !reverse ">' . t('Industry') . '</a></th>';
-                $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'careerLevel\' ; reverse= !reverse ">' . t('Career Level') . '</a></th>';
-                $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'careerLevel\' ; reverse= !reverse ">' . t('Type') . '</a></th>';
-                // $output .= '<th></th>';
-                $output .= '<th></th>';
-              $output .= '</tr>';
-            $output .= '</thead>';
+          $output .= '<thead>';
+            $output .= '<tr>';
+              $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'datePostedTimeValue\' ; reverse= !reverse ">' . t('Date') . '</a></th>';
+              $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'jobTitle\' ; reverse= !reverse ">' . t('Job Title') . '</a></th>';
+              $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'town\' ; reverse= !reverse ">' . t('Town') . '</a></th>';
+              $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'industry\' ; reverse= !reverse ">' . t('Industry') . '</a></th>';
+              $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'careerLevel\' ; reverse= !reverse ">' . t('Career Level') . '</a></th>';
+              $output .= '<th class="font-weight-100"><a href="" data-ng-click="sortField = \'careerLevel\' ; reverse= !reverse ">' . t('Type') . '</a></th>';
+              // $output .= '<th></th>';
+              $output .= '<th></th>';
+            $output .= '</tr>';
+          $output .= '</thead>';
 
           $output .= '<tbody data-ng-repeat="row in tableRow | filter:inputFilter | orderBy:sortField:reverse">';
             $output .= '<tr class="bg-4ab2de color-fff hover-bg-0088cc">';

@@ -27,7 +27,7 @@ jQuery(document).ready(function(){
   L.NumberedDivIcon = L.Icon.extend({
     options: {
       // iconUrl: '<%= image_path("leaflet/marker_hole.png") %>',
-      iconUrl: basePathUrl + 'sites/all/modules/custom/jobboard/image/marker_hole.png',
+      iconUrl: basePathUrl + 'sites/all/modules/custom/jobboard/image/marker_hole_44a3d3.png',
       number: '',
       shadowUrl: null,
       iconSize: new L.Point(25, 41),
@@ -57,8 +57,11 @@ jQuery(document).ready(function(){
       return null;
     }
   });
-  /** - - - - - - - Numbered Markers - - - - - - - - - - - - - - - - - - - - - - - -  */
 
+  /** - - - - - - - Markers Coordinates- - - - - - - - - - - - - - - - - - - - - - - -  */
+  /**
+   * fake one
+   */
   var windsorMarker = [
     {
       coordinates: [42.33, -82.95],
@@ -70,25 +73,38 @@ jQuery(document).ready(function(){
     }
   ];
 
-  // loop each point to add marker to map
-  for (var i = 0; i < windsorMarker.length; i++) {
-    new L.Marker(windsorMarker[i].coordinates, {
-      icon: new L.NumberedDivIcon({number: (i + 1) })
-    }).addTo(map).bindPopup(windsorMarker[i].popupText);
-  }
+  /** - - - - - - -JSON - - - - - - - - - - - - - - - - - - - - - - - -  */
+  jsonUrl = basePathUrl + 'jsoninfo/jobboard/jobs/map';
+  var promise = jQuery.getJSON(jsonUrl);
+  promise.then(function(data) {
+    // console.log(data) // take a look at the data in the console
 
-  /** - - - - - - - draw a polyline in Leaflet - - - - - - - - - - - - - - - - - - -  */
-  var pointList = [
-    new L.LatLng(42.33, -82.95),
-    new L.LatLng(42.33, -82.85),
-  ];
+    var windsorMarker = data;
 
-  var firstpolyline = new L.Polyline(pointList, {
-    color: 'red',
-    weight: 3,
-    opacity: 0.5,
-    smoothFactor: 1
+    // loop each point to add marker to map
+    for (var i = 0; i < windsorMarker.length; i++) {
+      new L.Marker(windsorMarker[i].coordinates, {
+        icon: new L.NumberedDivIcon({number: (i + 1) })
+      }).addTo(map).bindPopup(windsorMarker[i].popupText);
+    }
+
+    /** - - - - - - - draw a polyline in Leaflet - - - - - - - - - - - - - - - - - - -  */
+    var pointList = [
+      new L.LatLng(42.33, -82.95),
+      new L.LatLng(42.33, -82.85),
+    ];
+
+    var firstpolyline = new L.Polyline(pointList, {
+      color: 'red',
+      weight: 3,
+      opacity: 0.3,
+      smoothFactor: 1
+    });
+    firstpolyline.addTo(map);
   });
-  firstpolyline.addTo(map);
+
+
+
+
 
 });

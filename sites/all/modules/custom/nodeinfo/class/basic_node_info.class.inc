@@ -329,50 +329,6 @@ class JobsInfo extends NodeInfo {
     return $output;
   }
 
-  /**
-   * @return
-   */
-  public function latitude() {
-    $output = NULL;
-    if (isset($this->node->field_jobs_latitude['und'][0]['value'])) {
-      $output = $this->node->field_jobs_latitude['und'][0]['value'];
-    }
-    return $output;
-  }
-  /**
-   * @return
-   */
-  public function longitude() {
-    $output = NULL;
-    if (isset($this->node->field_jobs_longitude['und'][0]['value'])) {
-      $output = $this->node->field_jobs_longitude['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return Integer, Term Tid
-   */
-  public function townTid() {
-    $output = NULL;
-    $output = $this->fieldTargetId('field_jobs_town');
-    // if (isset($this->node->field_jobs_town['und'][0]['target_id'])) {
-    //   $output = $this->node->field_jobs_town['und'][0]['target_id'];
-    // }
-    return $output;
-  }
-  /**
-    * @return String, Term Property
-    */
-  public function townName() {
-    $output = NULL;
-
-    $TermInfo = new TermInfo($this->townTid());
-    if(!empty($TermInfo)) {
-      $output = $TermInfo->termName();
-    }
-    return $output;
-  }
 
   /** - - - - - - other - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 }
