@@ -41,6 +41,21 @@ function libraryinfo_library() {
   );
 
   /**
+   * "Chart.js"
+   * https://github.com/nnnick/Chart.js
+   * 2.0.0-alpha4
+   */
+  $chart_js_path = libraries_get_path('Chart.js-master') . '/';
+  $libraries['libraryinfo_chart_js'] = array(
+    'title' => 'Chart JS',
+    'version' => '2.0.0',
+    'website' => 'http://chartjs.org/',
+    'js' => array(
+      $chart_js_path . 'Chart.js' => array(),
+    ),
+  );
+
+  /**
    * "Font Awesome"
    * Font Awesome is a jQuery plugin that gives you the ability to make any element on your page always stay visible.
    */
