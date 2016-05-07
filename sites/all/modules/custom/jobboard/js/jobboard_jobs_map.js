@@ -89,18 +89,18 @@ jQuery(document).ready(function(){
     }
 
     /** - - - - - - - draw a polyline in Leaflet - - - - - - - - - - - - - - - - - - -  */
-    var pointList = [
-      new L.LatLng(42.33, -82.95),
-      new L.LatLng(42.33, -82.85),
-    ];
+    // var pointList = [
+    //   new L.LatLng(42.33, -82.95),
+    //   new L.LatLng(42.33, -82.85),
+    // ];
 
-    var firstpolyline = new L.Polyline(pointList, {
-      color: 'red',
-      weight: 3,
-      opacity: 0.3,
-      smoothFactor: 1
-    });
-    firstpolyline.addTo(map);
+    // var firstpolyline = new L.Polyline(pointList, {
+    //   color: 'red',
+    //   weight: 3,
+    //   opacity: 0.3,
+    //   smoothFactor: 1
+    // });
+    // firstpolyline.addTo(map);
   });
 
 
