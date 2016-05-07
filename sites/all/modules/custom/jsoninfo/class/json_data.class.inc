@@ -25,11 +25,13 @@ class JsonDataUnit{
 
       if ($JobsInfo->latitude() && $JobsInfo->longitude()) {
         $output[] = array(
+          "body"  => $JobsInfo->fieldValue('body'),
           "careerLevel"  => $JobsInfo->fieldTargetIdObject('field_jobs_career_level')->termName(),
           "datePostedTimeValue" => $JobsInfo->datePostedTimeValue(),
           "nodeTitle"  => $JobsInfo->nodeTitle(),
           "nodeViewLink"  => $JobsInfo->nodeViewLink(),
           "town"  => $JobsInfo->fieldTargetIdObject('field_jobs_town')->termName(),
+          "industry"  => $JobsInfo->fieldTargetIdObject('field_jobs_industry')->termName(),
         );
       }
     }

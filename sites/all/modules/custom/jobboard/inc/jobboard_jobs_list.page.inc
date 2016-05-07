@@ -38,7 +38,7 @@ function _jobboard_jobs_list() {
         // button
         $output .= '<div class="float-left margin-bottom-12">';
           $output .= '<div class="margin-left-12">';
-            $output .= '<span class="btn btn-primary" data-ng-click="toQuoteBtn()">To Quote</span>';
+            $output .= '<span class="btn btn-primary" data-ng-click="toQuoteBtn()">Print</span>';
           $output .= '</div>';
         $output .= '</div>';
 
@@ -69,8 +69,9 @@ function _jobboard_jobs_list() {
                 $output .= '<th><a href="" data-ng-click="sortField = \'orderDate\' ; reverse= !reverse ">' . t('Date') . '</a></th>';
                 $output .= '<th>' . t('Title') . '</th>';
                 $output .= '<th><a href="" data-ng-click="sortField = \'amount\' ; reverse= !reverse ">' . t('Town') . '</a></th>';
+                $output .= '<th>Industry</th>';
                 $output .= '<th><a href="" data-ng-click="sortField = \'author\' ; reverse= !reverse ">' . t('Career Level') . '</a></th>';
-                $output .= '<th></th>';
+                // $output .= '<th></th>';
                 $output .= '<th></th>';
               $output .= '</tr>';
             $output .= '</thead>';
@@ -80,13 +81,14 @@ function _jobboard_jobs_list() {
               $output .= '<td>{{ row.datePostedTimeValue }}</td>';
               $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()" class="h5">{{ row.nodeTitle }}</td>';
               $output .= '<td>{{ row.town }}</td>';
+              $output .= '<td>{{ row.industry }}</td>';
               $output .= '<td>{{ row.careerLevel }}</td>';
-              $output .= '<td><a href="{{ row.nodeViewLink }}"><i class="fa fa-external-link fa-lg"></i></a></td>';
+              // $output .= '<td><a href="{{ row.nodeViewLink }}"><i class="fa fa-external-link fa-lg"></i></a></td>';
               $output .= '<td data-ng-click="addOrderList(row)" class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';
             $output .= '</tr>';
 
             $output .= '<tr>';
-              $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.productsSetHtmlList)"></td>';
+              $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.body)"></td>';
             $output .= '</tr>';
           $output .= '</tbody>';
 
