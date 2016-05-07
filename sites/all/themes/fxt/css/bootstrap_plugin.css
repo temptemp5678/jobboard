@@ -20,6 +20,9 @@
 /**
  * background
  */
+.bg-0088cc {
+  background-color: #0088cc;
+}
 .bg-19283d {
   background-color: #19283d;
 }
@@ -157,6 +160,9 @@
  */
 .color-000 {
   color: #000;
+}
+.color-0088cc{
+  color: #0088cc;
 }
 .color-1458af{
   color: #1458af;

@@ -33,6 +33,7 @@ class JsonDataUnit{
         "nodeNid"  => $JobsInfo->nodeNid(),
         "nodeTitle"  => $JobsInfo->nodeTitle(),
         "nodeViewLink"  => $JobsInfo->nodeViewLink(),
+        "jobType"  => $JobsInfo->fieldTargetIdObject('field_jobs_job_type')->termName(),
         "town"  => $JobsInfo->fieldTargetIdObject('field_jobs_town')->termName(),
         "industry"  => $JobsInfo->fieldTargetIdObject('field_jobs_industry')->termName(),
       );
