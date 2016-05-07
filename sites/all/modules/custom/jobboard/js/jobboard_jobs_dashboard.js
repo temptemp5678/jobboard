@@ -159,5 +159,8 @@ jQuery(document).ready(function() {
   var contextLineChart = IDLineChart.get(0).getContext('2d');
   var myLineChart = new Chart(contextLineChart).Line(data,options);
 
+  // legendTemplate is if you want to generate an HTML legend for the chart and use somewhere else on the page
+  document.getElementById('js-legend').innerHTML = myLineChart.generateLegend();
+
 });
 

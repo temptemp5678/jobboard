@@ -10,6 +10,8 @@ function _jobboard_jobs_dashboard() {
   drupal_add_library('libraryinfo', 'libraryinfo_chart_js');
   drupal_add_js(drupal_get_path('module', 'jobboard') .'/js/jobboard_jobs_dashboard.js');
 
+  drupal_add_css(drupal_get_path('module', 'jobboard') .'/css/jobboard_jobs_dashboard.css');
+
   $output = '';
   $output .= '<div class="panel panel-default">';
     $output .= '<div class="panel-heading bg-4ab2de color-fff">' . t('Career Level') . '</div>';
@@ -22,6 +24,8 @@ function _jobboard_jobs_dashboard() {
     $output .= '<div class="panel-heading bg-4ab2de color-fff">Job Trend</div>';
     $output .= '<div class="panel-body bg-ffffff padding-0">';
       $output .= '<canvas class="padding-6-12" id="reportpage-summary-quote-line-chart" width="390" height="150"></canvas>';
+    $output .=' </div>';
+    $output .=' <div id="js-legend" class="chart-legend">';
     $output .=' </div>';
   $output .=' </div>';
 
