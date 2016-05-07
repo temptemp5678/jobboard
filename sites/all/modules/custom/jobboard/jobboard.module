@@ -8,7 +8,7 @@
  * Implements hook_init()
  */
 function jobboard_init() {
-
+  drupal_add_css(drupal_get_path('module', 'jobboard') . '/css/jobboard_jobs_common.css');
 }
 
 /**

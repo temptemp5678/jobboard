@@ -1,0 +1,11 @@
+header.navbar-default .navbar-nav > .active > a,
+header.navbar-default .navbar-nav > .active > a:hover,
+header.navbar-default .navbar-nav > .active > a:focus {
+  color: #0088cc;
+  background-color: #f8f8f8;
+}
+
+.panel-default .panel-heading.bg-4ab2de {
+  background-color: #4ab2de;
+  color: #ffffff;
+}
