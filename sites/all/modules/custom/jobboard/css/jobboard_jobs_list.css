@@ -1,0 +1,8 @@
+.hidden-text-description p {
+  height: 32px;
+  overflow: hidden;
+}
+
+.table-hover tr.hover-bg-ffffff:hover {
+  background-color: #ffffff;
+}

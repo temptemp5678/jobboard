@@ -8,6 +8,7 @@ function _jobboard_jobs_list() {
    * js
    */
   drupal_add_js(drupal_get_path('module', 'jobboard') .'/ng_js/jobboard_jobs_list.ng.js');
+  drupal_add_css(drupal_get_path('module', 'jobboard') .'/css/jobboard_jobs_list.css');
 
   /**
    * output
@@ -90,14 +91,17 @@ function _jobboard_jobs_list() {
               $output .= '<td class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';
             $output .= '</tr>';
 
-            $output .= '<tr class="overflow-hidden" style="height:28px;">';
-              $output .= '<td colspan="100%" data-ng-show="!hoverInStatus" data-ng-bind-html="renderHtml(row.description)" style="height:28px;"></td>';
+            $output .= '<tr>';
+              $output .= '<td colspan="100%" data-ng-show="!hoverInStatus" data-ng-bind-html="renderHtml(row.description)" class="hidden-text-description" style="border:none"></td>';
             $output .= '</tr>';
-            $output .= '<tr class="border-none height-48">';
-              $output .= '<td colspan="100%" data-ng-show="!hoverInStatus" class="cursor-pointer text-center color-0088cc"><i class="fa fa-angle-double-down fa-lg font-bold"></i></td>';
+            $output .= '<tr class="hover-bg-ffffff">';
+              $output .= '<td colspan="100%" data-ng-show="!hoverInStatus" class="cursor-pointer text-center color-0088cc" style="border:none"><i class="fa fa-angle-double-down fa-lg font-bold"></i></td>';
             $output .= '</tr>';
             $output .= '<tr>';
-              $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.description)"></td>';
+              $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.description)" style="border:none"></td>';
+            $output .= '</tr>';
+            $output .= '<tr class="border-none height-24 hover-bg-ffffff">';
+              $output .= '<td colspan="100%" style="border:none">&nbsp;</td>';
             $output .= '</tr>';
           $output .= '</tbody>';
 

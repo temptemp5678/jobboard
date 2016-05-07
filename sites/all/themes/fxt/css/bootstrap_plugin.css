@@ -429,6 +429,13 @@
 }
 
 /**
+ *
+ */
+.hover-bg-ffffff:hover {
+  background-color: #ffffff;
+}
+
+/**
  * line-height
  */
 .line-height-1 {
