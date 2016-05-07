@@ -21,52 +21,75 @@ jQuery(document).ready(function() {
   // };
 
   // var allProductTable = fetchJson(jsonFilePath);
+  var allProductTable = [
+    {
+      nodeTitle: 'Entry Level',
+      topPriority: 12,
+    },
+    {
+      nodeTitle: 'Executive',
+      topPriority: 22,
+    },
+    {
+      nodeTitle: 'Experienced',
+      topPriority: 18,
+    },
+    {
+      nodeTitle: 'Management',
+      topPriority: 6,
+    },
+    {
+      nodeTitle: 'Student',
+      topPriority: 2,
+    },
+  ];
 
-  // var chartjsDataLabel = [];
-  // var chartjsDataValue = [];
 
-  // for (var i = 0; i < 8; i++) {
-  //   chartjsDataLabel.push(allProductTable[i].nodeTitle);
-  //   chartjsDataValue.push(allProductTable[i].topPriority);
-  // }
+  var chartjsDataLabel = [];
+  var chartjsDataValue = [];
 
-  // /*
-  //  * Bar chart
-  //  */
-  // Chart.defaults.global.tooltipTitleFontFamily = '"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif';
-  // Chart.defaults.global.scaleFontSize = 10;
+  for (var i = 0; i < 5; i++) {
+    chartjsDataLabel.push(allProductTable[i].nodeTitle);
+    chartjsDataValue.push(allProductTable[i].topPriority);
+  }
 
-  // var data = {
-  //   labels: chartjsDataLabel,
-  //   datasets: [
-  //     {
-  //       label: "My First dataset",
-  //       data: chartjsDataValue,
-  //     }
-  //   ]
-  // };
+  /*
+   * Bar chart
+   */
+  Chart.defaults.global.tooltipTitleFontFamily = '"Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif';
+  Chart.defaults.global.scaleFontSize = 10;
 
-  // var options = {
-  //   animation: true,
-  //   barShowStroke : false,
-  //   barValueSpacing : 30,
-  //   responsive: true
-  // };
+  var data = {
+    labels: chartjsDataLabel,
+    datasets: [
+      {
+        label: "My First dataset",
+        data: chartjsDataValue,
+      }
+    ]
+  };
 
-  // var IDBarChart = jQuery('#reportpage-summary-quote-bar-chart');
-  // var contextBarChart = IDBarChart.get(0).getContext('2d');
+  var options = {
+    animation: true,
+    barShowStroke : false,
+    barValueSpacing : 80,
+    responsive: true
+  };
 
-  // var myBarChart = new Chart(contextBarChart).Bar(data,options);
-  // //Bar Colors
-  // myBarChart.datasets[0].bars[0].fillColor = "#b6da52"; //bar 1
-  // myBarChart.datasets[0].bars[1].fillColor = "#3da5e7"; //bar 2
-  // myBarChart.datasets[0].bars[2].fillColor = "#e72682"; //bar 3
-  // myBarChart.datasets[0].bars[3].fillColor = "#edc351"; //bar 3
-  // myBarChart.datasets[0].bars[4].fillColor = "#aac1cc"; //bar 3
+  var IDBarChart = jQuery('#reportpage-summary-quote-bar-chart');
+  var contextBarChart = IDBarChart.get(0).getContext('2d');
+
+  var myBarChart = new Chart(contextBarChart).Bar(data,options);
+  //Bar Colors
+  myBarChart.datasets[0].bars[0].fillColor = "#b6da52"; //bar 1
+  myBarChart.datasets[0].bars[1].fillColor = "#3da5e7"; //bar 2
+  myBarChart.datasets[0].bars[2].fillColor = "#e72682"; //bar 3
+  myBarChart.datasets[0].bars[3].fillColor = "#edc351"; //bar 3
+  myBarChart.datasets[0].bars[4].fillColor = "#aac1cc"; //bar 3
   // myBarChart.datasets[0].bars[5].fillColor = "#b6da52"; //bar 3
   // myBarChart.datasets[0].bars[6].fillColor = "#3da5e7"; //bar 3
   // myBarChart.datasets[0].bars[7].fillColor = "#edc351"; //bar 3
-  // myBarChart.update();
+  myBarChart.update();
 
   /*
    * Line chart
@@ -75,7 +98,7 @@ jQuery(document).ready(function() {
   Chart.defaults.global.scaleFontSize = 10;
 
   var data = {
-    labels: ["2014-Q4", "2015-Q1", "2015-Q2", "2015-Q3", "2015-Q4"],
+    labels: ["2015-Q1", "2015-Q2", "2015-Q3", "2015-Q4", "2016-Q1"],
       datasets: [
       {
         label: "Harmonic",
@@ -85,7 +108,7 @@ jQuery(document).ready(function() {
         pointStrokeColor: "#fff",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "#b6da52",
-        data: [65, 59, 80, 81, 56,]
+        data: [60, 59, 80, 81, 56,]
       },
       {
         label: "NVION",
