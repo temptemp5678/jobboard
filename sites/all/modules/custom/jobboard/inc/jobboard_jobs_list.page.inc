@@ -13,13 +13,6 @@ function _jobboard_jobs_list() {
    * output
    */
   $output = '';
-  $output .= '<div class="panel panel-default">';
-    $output .= '<div class="panel-heading">' . t('Top Product') . '</div>';
-    $output .= '<div class="panel-body bg-ffffff padding-0">';
-      $output .= '<canvas class="padding-6-12 float-left" id="reportpage-summary-quote-bar-chart" width="390" height="150"></canvas>';
-    $output .=' </div>';
-  $output .=' </div>';
-
   $output .= '<div data-ng-app="jobboardJobsList" class="row margin-0">';
     $output .= '<div data-ng-controller="jobboardJobsListController" class="row margin-0">';
 
@@ -79,18 +72,16 @@ function _jobboard_jobs_list() {
                 $output .= '<th><a href="" data-ng-click="sortField = \'author\' ; reverse= !reverse ">' . t('Career Level') . '</a></th>';
                 $output .= '<th></th>';
                 $output .= '<th></th>';
-                $output .= '<th></th>';
               $output .= '</tr>';
             $output .= '</thead>';
 
           $output .= '<tbody data-ng-repeat="row in tableRow | filter:inputFilter | orderBy:sortField:reverse">';
             $output .= '<tr>';
               $output .= '<td>{{ row.datePostedTimeValue }}</td>';
-              $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()">{{ row.nodeTitle }}</td>';
+              $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()" class="h5">{{ row.nodeTitle }}</td>';
               $output .= '<td>{{ row.town }}</td>';
               $output .= '<td>{{ row.careerLevel }}</td>';
               $output .= '<td><a href="{{ row.nodeViewLink }}"><i class="fa fa-external-link fa-lg"></i></a></td>';
-              $output .= '<td><a href="{{ row.nodeEditLink }}?destination=order/summary/index"><i class="fa fa-pencil-square-o fa-lg color-767676"></i></a></td>';
               $output .= '<td data-ng-click="addOrderList(row)" class="cursor-pointer"><i class="fa fa-plus fa-lg"></i></td>';
             $output .= '</tr>';
 

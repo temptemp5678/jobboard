@@ -44,10 +44,10 @@ function libraryinfo_library() {
    * "Font Awesome"
    * Font Awesome is a jQuery plugin that gives you the ability to make any element on your page always stay visible.
    */
-  $font_awsome_path = libraries_get_path('font-awesome-4.4.0') . '/';
+  $font_awsome_path = libraries_get_path('font-awesome-4.5.0') . '/';
   $libraries['libraryinfo_font_awsome'] = array(
     'title' => 'Font Awesome',
-    'version' => 'v4.4.0 ',
+    'version' => 'v4.5.0 ',
     'website' => 'https://github.com/FortAwesome/Font-Awesome/',
     'css' => array(
       $font_awsome_path . 'css/font-awesome.min.css' => array(),
