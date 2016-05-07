@@ -41,6 +41,16 @@ app.controller('jobboardJobsListController', ['$scope', '$http', '$sce', 'mainDa
   };
 
   /**
+   * hover show row details
+   */
+  $scope.showMoreDescription = function(){
+    this.hoverInStatus = true;
+  };
+  $scope.hideMoreDescription = function(){
+    this.hoverInStatus = false;
+  };
+
+  /**
    * shows HTML code within the tag
    */
   $scope.renderHtml = function(html_code) {
