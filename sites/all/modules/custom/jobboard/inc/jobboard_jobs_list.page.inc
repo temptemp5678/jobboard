@@ -79,9 +79,9 @@ function _jobboard_jobs_list() {
             $output .= '</thead>';
 
           $output .= '<tbody data-ng-repeat="row in tableRow | filter:inputFilter | orderBy:sortField:reverse">';
-            $output .= '<tr>';
+            $output .= '<tr class="bg-4ab2de color-fff hover-bg-0088cc">';
               $output .= '<td>{{ row.datePostedTimeValue }}</td>';
-              $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()" class="h5 color-0088cc">{{ row.nodeTitle }}</td>';
+              $output .= '<td data-ng-mouseover="hoverIn()" data-ng-mouseleave="hoverOut()" class="h5 color-fff">{{ row.nodeTitle }}</td>';
               $output .= '<td>{{ row.town }}</td>';
               $output .= '<td>{{ row.industry }}</td>';
               $output .= '<td>{{ row.careerLevel }}</td>';
@@ -100,7 +100,7 @@ function _jobboard_jobs_list() {
             $output .= '<tr>';
               $output .= '<td colspan="100%" data-ng-show="hoverInStatus" data-ng-bind-html="renderHtml(row.description)" style="border:none"></td>';
             $output .= '</tr>';
-            $output .= '<tr class="border-none height-24 hover-bg-ffffff">';
+            $output .= '<tr class="border-none height-24 hover-bg-ffffff border-bottom-ccc">';
               $output .= '<td colspan="100%" style="border:none">&nbsp;</td>';
             $output .= '</tr>';
           $output .= '</tbody>';

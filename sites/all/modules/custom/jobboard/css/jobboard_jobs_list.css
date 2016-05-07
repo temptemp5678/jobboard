@@ -1,8 +1,29 @@
 .hidden-text-description p {
+  display: none;
+}
+.hidden-text-description p:first-child {
   height: 32px;
   overflow: hidden;
+  display: block;
 }
 
-.table-hover tr.hover-bg-ffffff:hover {
+.table-hover tbody tr.hover-bg-0088cc:hover {
+  background-color: #0088cc;
+}
+
+.table-hover tbody tr.hover-bg-ffffff:hover {
   background-color: #ffffff;
+}
+
+.table-hover tbody tr {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-left: 1px #ccc solid;
+  border-right: 1px #ccc solid;
+}
+
+.table-hover tbody tr.border-bottom-ccc {
+  border-top: 1px #ccc solid;
+  border-left: none;
+  border-right: none;
 }
