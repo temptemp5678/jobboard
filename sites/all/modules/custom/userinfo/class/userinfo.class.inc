@@ -8,7 +8,7 @@
    $UserInfo = new UserInfo($uid);
    $UserInfo->userName();
  */
-class UserInfo {
+class BasicUserInfo {
   public $uid;
   public $user = NULL;
 
@@ -91,7 +91,7 @@ class UserInfo {
     return $output;
   }
 
-  /** - - - - - user object - - - - - - - - - -  - - - - -   */
+  /** - - - - - user link  - - - - - - - - - -  - - - - -   */
 
   /**
    * @return Term Description
@@ -100,6 +100,54 @@ class UserInfo {
     $output = NULL;
     if ($this->user) {
       $output = base_path() . 'manage/user/edit/' . $this->user->uid;
+    }
+    return $output;
+  }
+
+  /** - - - - - - basic field value - - - - - - - - - - - - - - - - - - - - - - - -  */
+  /**
+   * @return value
+   */
+  public function fieldSafeValue($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['safe_value'])) {
+      $output = $this->node->{$field_name}['und'][0]['safe_value'];
+    }
+    return $output;
+  }
+
+  /**
+   * @return value
+   */
+  public function fieldTargetId($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['target_id'])) {
+      $output = $this->node->{$field_name}['und'][0]['target_id'];
+    }
+    return $output;
+  }
+  /**
+   * @return value
+   */
+  public function fieldTargetIdObject($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['target_id'])) {
+
+      $TermInfo = new TermInfo($this->node->{$field_name}['und'][0]['target_id']);
+      if(!empty($TermInfo)) {
+        $output = $TermInfo;
+      }
+    }
+    return $output;
+  }
+
+  /**
+   * @return value
+   */
+  public function fieldValue($field_name = '') {
+    $output = NULL;
+    if (isset($this->node->{$field_name}['und'][0]['value'])) {
+      $output = $this->node->{$field_name}['und'][0]['value'];
     }
     return $output;
   }
@@ -158,57 +206,6 @@ class UserInfo {
     return $output;
   }
 
-  /** - - - - - user field - - - - - - - - - -  - - - - -   */
-  /**
-   * @return String, Title
-   */
-  public function fax() {
-    $output = NULL;
-
-    if (isset($this->user->field_user_fax['und'][0]['value'])) {
-      $output = $this->user->field_user_fax['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String, Title
-   */
-  public function mobile() {
-    $output = NULL;
-
-    if (isset($this->user->field_user_mobile['und'][0]['value'])) {
-      $output = $this->user->field_user_mobile['und'][0]['value'];
-    }
-    return $output;
-  }
-
-  /**
-   * @return String, Title
-   */
-  public function occupation() {
-    $output = NULL;
-
-    if (isset($this->user->field_user_occupation['und'][0]['value'])) {
-      $output = $this->user->field_user_occupation['und'][0]['value'];
-    }
-    return $output;
-  }
-
-
-
-  /**
-   * @return String, Title
-   */
-  public function phone() {
-    $output = NULL;
-
-    if (isset($this->user->field_user_phone['und'][0]['value'])) {
-      $output = $this->user->field_user_phone['und'][0]['value'];
-    }
-    return $output;
-  }
-
   /** - - - - - user Avatar - - - - - - - - - -  - - - - -   */
   /**
    * @return User avatar
@@ -232,6 +229,29 @@ class UserInfo {
       }
     }
     return $user_avatar;
+  }
+
+}
+
+/**
+ * class
+   $UserInfo = new UserInfo($tid);
+   $UserInfo->phone();
+ */
+class UserInfo extends BasicUserInfo {
+
+  /** - - - - - user field - - - - - - - - - -  - - - - -   */
+
+  /**
+   * @return String, Title
+   */
+  public function phone() {
+    $output = NULL;
+
+    if (isset($this->user->field_user_phone['und'][0]['value'])) {
+      $output = $this->user->field_user_phone['und'][0]['value'];
+    }
+    return $output;
   }
 
 }
